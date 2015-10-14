@@ -4,6 +4,7 @@
 #include <QString>
 
 #include "iflatfilefield.h"
+#include "nulllog.h"
 
 
 namespace vToolKit{

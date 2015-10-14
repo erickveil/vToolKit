@@ -16,8 +16,8 @@ namespace vToolKit{
     public:
         LogFileRecord();
         LogFileRecord(QString record_str, iLog &log);
-        void initRecord(QString record_str, iLog &log);
         ~LogFileRecord() override;
+        void initRecord(QString record_str, iLog &log);
         IFlatFileField * getField(QString field_name) override;
         void setField(IFlatFileField &field) override;
         bool isNull() override;

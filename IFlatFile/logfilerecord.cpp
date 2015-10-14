@@ -6,12 +6,9 @@ namespace vToolKit{
     LogFileRecord::LogFileRecord()
     {
         _initNullRecord();
-        // TODO: Define a null log (singleton?)
-        //NullLog nlog;
-        //_log=nlog;
+        _log=new NullLog;
     }
 
-    // TODO: Include iLogger library
     LogFileRecord::LogFileRecord(QString record_str, iLog &log)
     {
         initRecord(record_str, log);
@@ -32,6 +29,7 @@ namespace vToolKit{
         delete _method;
         delete _line;
         delete _message;
+        if(_log->isNull()) delete _log;
     }
 
     IFlatFileField *LogFileRecord::getField(QString field_name)
