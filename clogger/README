@@ -1,0 +1,97 @@
+clogger
+===
+
+A basic logging interface.
+
+Created on:
+2015-08-19
+
+by:
+Erick Veil
+
+CLASSES
+---
+- iLog is the interface to use.
+
+Just call the method that matches your desired log level and pass it function
+ name*, line number*, and a message to log.
+
+- fileLog contains fleshed out logging methods.
+
+Passing a file path to the constructor will cause all logs to write to that
+file, regardless of level. Omitting that file path will cause non-error type
+logs to output to the system clogger stream (usually the same as cerr) and error
+ type streams will output directly to cerr.
+
+- testLog contains blank implementations.
+Use testLog in unit tests. All logging output is suppressed.
+
+* in gcc, function name can be obtained by __PRETTY_FUNCTION__ macro. Line
+number can be obtained from __LINE__.
+
+TARGET OS
+---
+Attempts have been made to make compile targeted code for both linux and
+windows. Windows implementation has not been tested.
+
+In order to compile for windows, you must find and change the #define OS_FLAG
+ value from UNIX to WIN. This flag is currently located in fileLog.h, but
+ there are plans to move it to a more global header file specifically for
+ such build flags.
+
+BUILD
+---
+This software has been written using JetBrains CLion 1.1 and successfully built
+using the default build parameters:
+* make: CMake 3.3.0
+* C compiler: cc (GCC) 4.8.3 20140911 (Red Hat 4.8.3-7)
+* C++ compiler: c++ (GCC) 4.8.3 20140911 (Red Hat 4.8.3-7))
+
+LIBRARY
+---
+Running "make static" on the command line will build static libraries for
+clogger and filectl instead of an executable program. These libraries allow
+you to use clogger classes and methods in your own project.
+
+Built libraries will be created in the lib directory, inside this source
+directory.
+
+USAGE
+---
+To use the log methods, include "iLog.h" and "fileLog.h" in your header, and
+pass an instance of your fileLog object to any classes that need logging.
+
+Also, main.cpp allows compiling of a command line interface for logging in
+shell scripts:
+
+     * SYNOPSIS
+     * ===
+     * clogger [OPTION...] STRING
+     *
+     * DESCRIPTION:
+     * ===
+     * Clog writes a log entry either to stderr or stdlog, depending on the
+     * log level, or it writes to a file, if provided. The log entries follow
+     * the log4Cxx format, without the insane Apache build and install
+     * requirements.
+     *
+     * Log levels:
+     * ----
+     * If more than one level is provided, the entry will be entered into the
+     * log multiple times: once at each requested level.
+     *
+     * -i   --info          Write an INFO level log entry.
+     * -d   --debug         Write a DEBUG level log entry.
+     * -w   --warn          Write a WARN level log entry.
+     * -e   --error         Write an ERROR level log entry.
+     * -f   --fatal         Write a FATAL level log entry.
+     *
+     * -o   --out <file>    Write log entry to a file at the path provided.
+     * If this option is omitted, then the log entry will default to its
+     * output stream. Info and debug output to stdlog by default. Warn,
+     * error, and fatal level logs output to stderr.
+     *
+     * EXAMPLE:
+     * ---
+     * echo "This is an info log entry." | clogger -io /var/log/my_log.log
+

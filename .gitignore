@@ -1,0 +1,8 @@
+
+
+*.idea/
+*.o
+*.a
+lib
+bin
+*.pro.user

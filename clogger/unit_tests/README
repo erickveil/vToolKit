@@ -1,0 +1,12 @@
+Unit tests for clog
+
+Uses cxxtest
+
+Obtain test suite with command:
+git clone https://github.com/CxxTest/cxxtest
+
+Then add cxxtest/cxxtest directory to your include files:
+sudo ln -s /home/path/to/cxxtest/cxxtest /usr/includes/
+
+Then follow the directions in the README file in the root of cxxtest to
+create, build, and run tests.
