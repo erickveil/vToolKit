@@ -17,33 +17,35 @@ namespace vToolKit{
     class testLog : public iLog {
 
     public:
-        void logInfo(string func, int line, string msg) override;
+        void logInfo(string func, int line, string msg) override {}
 
-        void logInfo(string func, int line, QString msg) override;
+        void logInfo(string func, int line, QString msg) override {}
 
-        void logDebug(string func, int line, string msg) override;
+        void logDebug(string func, int line, string msg) override {}
 
-        void logDebug(string func, int line, QString msg) override;
+        void logDebug(string func, int line, QString msg) override {}
 
-        void logWarn(string func, int line, string msg) override;
+        void logWarn(string func, int line, string msg) override {}
 
-        void logWarn(string func, int line, QString msg) override;
+        void logWarn(string func, int line, QString msg) override {}
 
-        void logError(string func, int line, exception ex) override;
+        void logError(string func, int line, exception ex) override {}
 
-        void logError(string func, int line, string msg) override;
+        void logError(string func, int line, string msg) override {}
 
-        void logError(string func, int line, QString msg) override;
+        void logError(string func, int line, QString msg) override {}
 
-        void logError(QxException ex) override;
+        void logError(QxException ex) override {}
 
-        void logFatal(string func, int line, exception ex) override;
+        void logFatal(string func, int line, exception ex) override {}
 
-        void logFatal(string func, int line, string msg) override;
+        void logFatal(string func, int line, string msg) override {}
 
-        void logFatal(string func, int line, QString msg) override;
+        void logFatal(string func, int line, QString msg) override {}
 
-        void logFatal(QxException ex) override;
+        void logFatal(QxException ex) override {}
+
+        bool isNull() override { return false; }
 
     };
 

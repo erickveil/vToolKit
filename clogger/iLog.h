@@ -92,6 +92,19 @@ namespace vToolKit{
         virtual void logFatal(string func, int line, string msg) = 0;
         virtual void logFatal(string func, int line, QString msg) = 0;
         virtual void logFatal(QxException ex) = 0;
+
+        /**
+         * @brief isNull
+         *
+         * Null logs are instantiated inside default constructors and null
+         * classes.
+         *
+         * They will not log anything.
+         *
+         * @return will return true on this function.
+         * All other log classes will return false.
+         */
+        virtual bool isNull() = 0;
     };
 
 }

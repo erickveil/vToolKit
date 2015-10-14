@@ -108,6 +108,8 @@ namespace vToolKit
         void logFatal(string func, int line, QString msg) override;
         void logFatal(QxException ex) override;
 
+        bool isNull() override { return false;}
+
     private:
 
         IReadWriteFile *_log_file;
