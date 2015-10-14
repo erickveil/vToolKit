@@ -3,8 +3,8 @@
 
 #include "iflatfilefield.h"
 
-namespace vToolKit{
 
+namespace vToolKit{
 
     class LogFileField : public IFlatFileField
     {

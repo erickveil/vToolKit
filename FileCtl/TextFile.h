@@ -9,10 +9,10 @@
 #include <sstream>
 #include <vector>
 
-#include "IReadWriteFile.h"
-
 #ifndef CLOG_STDFILE_H
 #define CLOG_STDFILE_H
+
+#include "IReadWriteFile.h"
 
 using namespace std;
 

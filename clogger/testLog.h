@@ -1,11 +1,11 @@
+#ifndef CLOG_TESTLOG_H
+#define CLOG_TESTLOG_H
+
 //
 // Created by fac on 8/19/15.
 //
 
 #include "iLog.h"
-
-#ifndef CLOG_TESTLOG_H
-#define CLOG_TESTLOG_H
 
 namespace vToolKit{
 

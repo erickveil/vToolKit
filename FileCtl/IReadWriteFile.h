@@ -1,12 +1,12 @@
+#ifndef CLOG_IFILECTRL_H
+#define CLOG_IFILECTRL_H
+
 //
 // Created by fac on 8/25/15.
 //
 
 #include <string>
 #include <vector>
-
-#ifndef CLOG_IFILECTRL_H
-#define CLOG_IFILECTRL_H
 
 using namespace std;
 
@@ -19,7 +19,7 @@ namespace vToolKit{
     class IReadWriteFile {
     public:
 
-        virtual ~IReadWriteFile() {};
+        virtual ~IReadWriteFile() {}
 
         /**
          * appendLine()

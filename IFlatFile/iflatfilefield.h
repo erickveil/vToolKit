@@ -3,9 +3,8 @@
 
 #include <QString>
 
+
 namespace vToolKit{
-
-
 
     class IFlatFileField
     {

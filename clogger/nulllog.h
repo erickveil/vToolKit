@@ -1,8 +1,8 @@
 #ifndef NULLLOG_H
 #define NULLLOG_H
 
-#include "testLog.h"
 
+#include "testLog.h"
 namespace vToolKit{
 
     class NullLog : public testLog

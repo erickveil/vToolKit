@@ -1,3 +1,6 @@
+#ifndef CLOG_ILOG_H
+#define CLOG_ILOG_H
+
 //
 // Created by fac on 8/19/15.
 //
@@ -6,10 +9,6 @@
 #include <string>
 
 #include "qxexception.h"
-
-#ifndef CLOG_ILOG_H
-#define CLOG_ILOG_H
-
 using namespace std;
 
 namespace vToolKit{

@@ -1,3 +1,6 @@
+#ifndef CLOG_FILELOG_H
+#define CLOG_FILELOG_H
+
 //
 // Created by fac on 8/19/15.
 //
@@ -11,10 +14,6 @@
 
 
 using namespace std;
-
-#ifndef CLOG_FILELOG_H
-#define CLOG_FILELOG_H
-
 namespace vToolKit
 {
 
