@@ -1,7 +1,7 @@
 #ifndef IFLATFILE_H
 #define IFLATFILE_H
 
-namespace vQtTools{
+namespace vToolKit{
 
 #include <QFileInfo>
 

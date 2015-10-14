@@ -10,7 +10,7 @@
 
 using namespace std;
 
-namespace vStdTools {
+namespace vToolKit{
 
     /**
      * A file interface for reading and writing.

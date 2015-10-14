@@ -4,30 +4,34 @@
 
 #include "testLog.h"
 
-void vStdTools::testLog::logInfo(string func, int line, string msg) {
+namespace vToolKit{
 
-}
+    void testLog::logInfo(string func, int line, string msg) {
 
-void vStdTools::testLog::logDebug(string func, int line, string msg) {
+    }
 
-}
+    void testLog::logDebug(string func, int line, string msg) {
 
-void vStdTools::testLog::logWarn(string func, int line, string msg) {
+    }
 
-}
+    void testLog::logWarn(string func, int line, string msg) {
 
-void vStdTools::testLog::logError(string func, int line, exception ex) {
+    }
 
-}
+    void testLog::logError(string func, int line, exception ex) {
 
-void vStdTools::testLog::logFatal(string func, int line, exception ex) {
+    }
 
-}
+    void testLog::logFatal(string func, int line, exception ex) {
 
-void vStdTools::testLog::logError(string func, int line, string msg) {
+    }
 
-}
+    void testLog::logError(string func, int line, string msg) {
 
-void vStdTools::testLog::logFatal(string func, int line, string msg) {
+    }
+
+    void testLog::logFatal(string func, int line, string msg) {
+
+    }
 
 }

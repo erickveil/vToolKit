@@ -10,13 +10,7 @@
 
 using namespace std;
 
-/**
- * Namespaces follow naming convention:
- * v        Erick Veil developed namespace
- * Std      Standard libraries only (eg: No Qt)
- * Tools    General tools for common use.
- */
-namespace vStdTools {
+namespace vToolKit{
 
     /**
      * Interface for logging classes.

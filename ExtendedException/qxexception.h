@@ -6,7 +6,7 @@
 
 using namespace std;
 
-namespace vQtTools{
+namespace vToolKit{
 
     /**
      * @brief The QxException class

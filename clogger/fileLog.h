@@ -4,34 +4,18 @@
 
 #include <fstream>
 #include <iostream>
+#include <unistd.h>
 
 #include "iLog.h"
 #include "iFileCtrl.h"
 
-// todo: a build flags file might be a more appropriate place for these defines.
-#define UNIX 0
-#define WIN 1
-// todo: Win build remains untested.
-// Set operating system compile flag here.
-#define OS_FLAG UNIX
-
-// Operating system specific libraries determined by OS_FLAG setting.
-#if (OS_FLAG==UNIX)
-// http://pubs.opengroup.org/onlinepubs/7908799/xsh/unistd.h.html
-#include <unistd.h>
-
-#elif (OS_FLAG==WIN)
-// https://en.wikipedia.org/wiki/Windows.h
-#include <windows.h>
-
-#endif
 
 using namespace std;
 
 #ifndef CLOG_FILELOG_H
 #define CLOG_FILELOG_H
 
-namespace vStdTools
+namespace vToolKit
 {
 
     /**

@@ -1,27 +1,27 @@
 #include "logfilerecord.h"
 
 
-namespace vQtTools{
+namespace vToolKit{
 
     LogFileRecord::LogFileRecord()
     {
         _initNullRecord();
         // TODO: Define a null log (singleton?)
-        NullLog nlog;
-        _log=nlog;
+        //NullLog nlog;
+        //_log=nlog;
     }
 
     // TODO: Include iLogger library
-    LogFileRecord::LogFileRecord(QString record_str, iLog log)
+    LogFileRecord::LogFileRecord(QString record_str, iLog &log)
     {
         initRecord(record_str, log);
     }
 
-    void LogFileRecord::initRecord(QString record_str, iLog log)
+    void LogFileRecord::initRecord(QString record_str, iLog &log)
     {
         _initNullRecord();
         _record_str=record_str;
-        _log=log;
+        _log=&log;
     }
 
     LogFileRecord::~LogFileRecord()
@@ -84,7 +84,7 @@ namespace vQtTools{
     void LogFileRecord::_initNullRecord()
     {
         _level=new LogFileField;
-        _timesamp=new LogFileField;
+        _timestamp=new LogFileField;
         _pid=new LogFileField;
         _method=new LogFileField;
         _line=new LogFileField;
@@ -99,9 +99,9 @@ namespace vQtTools{
         // TODO: trim list entries.
 
         if(record_list.size()!=6){
-            QString msg="When building log record, 6 fields required. "
+            QString msg=QString("When building log record, 6 fields required. ")
                     +record_list.size()+" fields provided.";
-            _log.warningLog(_PRETTY_FUNCTION_,_LINE_,msg);
+            _log->logWarn(__PRETTY_FUNCTION__,__LINE__,msg.toStdString());
         }
 
         // TODO: Test what happens if we use QStringList::at on a field that does not exist.
@@ -115,10 +115,10 @@ namespace vQtTools{
         _message=_buildLongMessage(record_list);
     }
 
-    LogFileRecord *LogFileRecord::_buildLongMessage(
+    LogFileField *LogFileRecord::_buildLongMessage(
             QStringList full_record_list)
     {
-        if(full_record_list.size<6) return new LogFileField;
+        if(full_record_list.size()<6) return new LogFileField;
 
         QString msg_value="";
         int i;
@@ -126,7 +126,7 @@ namespace vQtTools{
             msg_value+=(full_record_list.at(i)+" ");
         }
 
-        return new LogFileRecord("message", msg_value);
+        return new LogFileField("message", msg_value);
     }
 }
 

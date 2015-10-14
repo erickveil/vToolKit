@@ -7,7 +7,7 @@
 #ifndef CLOG_TESTLOG_H
 #define CLOG_TESTLOG_H
 
-namespace vStdTools {
+namespace vToolKit{
 
     /**
      * Provides implementation blanks for unit tests.

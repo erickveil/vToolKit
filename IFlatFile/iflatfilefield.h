@@ -3,7 +3,7 @@
 
 #include <QString>
 
-namespace vQtTools{
+namespace vToolKit{
 
 
 

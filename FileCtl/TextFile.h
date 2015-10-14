@@ -17,7 +17,7 @@
 using namespace std;
 
 
-namespace vStdTools{
+namespace vToolKit{
 
     /**
      * A Linux only, standard library, bare-bones file interface.

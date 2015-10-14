@@ -1,6 +1,6 @@
 #include "logfilefield.h"
 
-namespace vQtTools{
+namespace vToolKit{
 
     LogFileField::LogFileField()
     {

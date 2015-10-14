@@ -1,6 +1,6 @@
 #include "qxfatalexception.h"
 
-namespace vQtTools{
+namespace vToolKit{
 
 QxFatalException::QxFatalException(const char *method, int line,
                                    QString what_arg)

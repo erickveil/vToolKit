@@ -10,10 +10,37 @@ TARGET = vToolKit
 TEMPLATE = lib
 CONFIG += staticlib
 
-SOURCES += vtoolkit.cpp
+SOURCES += \
+    ExtendedException/qxfatalexception.cpp \
+    ExtendedException/qxexception.cpp \
+    IFlatFile/logfilefield.cpp \
+    IFlatFile/logfilerecord.cpp \
+    FileCtl/TextFile.cpp \
+    clogger/testLog.cpp \
+    clogger/fileLog.cpp
 
-HEADERS += vtoolkit.h
+HEADERS += \
+    FileCtl/iFileCtrl.h \
+    clogger/iLog.h \
+    ExtendedException/qxfatalexception.h \
+    ExtendedException/qxexception.h \
+    IFlatFile/iflatfilerecord.h \
+    IFlatFile/iflatfilefield.h \
+    IFlatFile/logfilefield.h \
+    IFlatFile/iflatfile.h \
+    IFlatFile/logfilerecord.h \
+    FileCtl/TextFile.h \
+    clogger/testLog.h \
+    clogger/fileLog.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+INCLUDEPATH += ./clogger \
+    ./ExtendedException \
+    ./FileCtl \
+    ./IFlatFile \
+
+QMAKE_CXXFLAGS += -std=c++11
+

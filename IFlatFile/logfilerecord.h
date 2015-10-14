@@ -2,19 +2,21 @@
 #define LOGFILERECORD_H
 
 #include <qxexception.h>
+#include <QStringList>
 
 #include "iflatfilerecord.h"
 #include "logfilefield.h"
+#include "iLog.h"
 
 
-namespace vQtTools{
+namespace vToolKit{
 
     class LogFileRecord : public IFlatFileRecord
     {
     public:
         LogFileRecord();
-        LogFileRecord(QString record_str, iLog log);
-        void initRecord(QString record_str, iLog log);
+        LogFileRecord(QString record_str, iLog &log);
+        void initRecord(QString record_str, iLog &log);
         ~LogFileRecord() override;
         IFlatFileField * getField(QString field_name) override;
         void setField(IFlatFileField &field) override;
@@ -28,10 +30,11 @@ namespace vQtTools{
         IFlatFileField *_line;
         IFlatFileField *_message;
         QString _record_str;
-        iLog _log;
+        iLog *_log;
+
         void _initNullRecord();
         void _constructRecordFromString();
-        LogFileRecord *_buildLongMessage(QStringList full_record_list);
+        LogFileField *_buildLongMessage(QStringList full_record_list);
     };
 
 }

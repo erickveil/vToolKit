@@ -3,7 +3,7 @@
 
 #include "qxexception.h"
 
-namespace vQtTools{
+namespace vToolKit{
 
     /**
      * @brief The QxFatalException class

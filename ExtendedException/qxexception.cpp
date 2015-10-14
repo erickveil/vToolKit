@@ -1,6 +1,6 @@
 #include "qxexception.h"
 
-namespace vQtTools{
+namespace vToolKit{
 
     QxException::QxException(const char* method, int line, QString what_arg)
     throw() : runtime_error(what_arg.toStdString())

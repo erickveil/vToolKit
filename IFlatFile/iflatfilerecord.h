@@ -6,7 +6,7 @@
 #include "iflatfilefield.h"
 
 
-namespace vQtTools{
+namespace vToolKit{
 
     class IFlatFileRecord
     {
