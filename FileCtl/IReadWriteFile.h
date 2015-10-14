@@ -16,7 +16,7 @@ namespace vToolKit{
      * A file interface for reading and writing.
      * Ideal for text files. Might need extension for other types of files.
      */
-    class iFileCtrl {
+    class IReadWriteFile {
     public:
 
         /**

@@ -121,7 +121,7 @@ namespace vToolKit{
         return ss.str();
     }
 
-    fileLog::fileLog(iFileCtrl *log_file) {
+    fileLog::fileLog(IReadWriteFile *log_file) {
         _log_file=log_file;
     }
 

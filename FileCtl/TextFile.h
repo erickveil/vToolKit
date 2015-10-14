@@ -9,7 +9,7 @@
 #include <sstream>
 #include <vector>
 
-#include "iFileCtrl.h"
+#include "IReadWriteFile.h"
 
 #ifndef CLOG_STDFILE_H
 #define CLOG_STDFILE_H
@@ -22,7 +22,7 @@ namespace vToolKit{
     /**
      * A Linux only, standard library, bare-bones file interface.
      */
-    class TextFile : public iFileCtrl {
+    class TextFile : public IReadWriteFile {
     public:
 
         explicit TextFile(string file_path);

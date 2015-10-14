@@ -20,7 +20,6 @@ SOURCES += \
     clogger/fileLog.cpp
 
 HEADERS += \
-    FileCtl/iFileCtrl.h \
     clogger/iLog.h \
     ExtendedException/qxfatalexception.h \
     ExtendedException/qxexception.h \
@@ -31,7 +30,8 @@ HEADERS += \
     IFlatFile/logfilerecord.h \
     FileCtl/TextFile.h \
     clogger/testLog.h \
-    clogger/fileLog.h
+    clogger/fileLog.h \
+    FileCtl/IReadWriteFile.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

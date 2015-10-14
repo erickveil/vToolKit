@@ -7,7 +7,7 @@
 #include <unistd.h>
 
 #include "iLog.h"
-#include "iFileCtrl.h"
+#include "IReadWriteFile.h"
 
 
 using namespace std;
@@ -29,7 +29,7 @@ namespace vToolKit
          * Setting the log file's path to "" will force logging to stdlog and
          * stderr streams instead of a file.
          */
-        explicit fileLog(iFileCtrl *log_file);
+        explicit fileLog(IReadWriteFile *log_file);
 
         /**
          * Without a parameter, logs default to stder.
@@ -103,7 +103,7 @@ namespace vToolKit
 
     private:
 
-        iFileCtrl *_log_file;
+        IReadWriteFile *_log_file;
 
         bool _isLogfileSet();
 
