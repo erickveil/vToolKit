@@ -19,6 +19,8 @@ namespace vToolKit{
     class IReadWriteFile {
     public:
 
+        virtual ~IReadWriteFile() {};
+
         /**
          * appendLine()
          *

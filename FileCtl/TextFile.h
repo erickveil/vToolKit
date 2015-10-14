@@ -25,7 +25,7 @@ namespace vToolKit{
     class TextFile : public IReadWriteFile {
     public:
 
-        explicit TextFile(string file_path);
+        TextFile(string file_path);
 
         /**
          * appendLine()
@@ -34,7 +34,7 @@ namespace vToolKit{
          *
          * @param string line : A line of text to append to the end of a file.
          */
-        void appendLine(string line);
+        void appendLine(string line) override;
 
         /**
          * overwriteFile()
@@ -43,14 +43,14 @@ namespace vToolKit{
          *
          * @param string contents : The new contents of the file.
          */
-        void overwriteFile(string contents);
+        void overwriteFile(string contents) override;
 
         /**
          * readFileToString()
          *
          * @return string : The data of the file, cast to a string.
          */
-        string readFileToString();
+        string readFileToString() override;
 
         /**
          * readFileToStringList
@@ -59,7 +59,7 @@ namespace vToolKit{
          *
          * @return vector<string> : A list of lines split on newline.
          */
-        vector<string> readFileToStringList();
+        vector<string> readFileToStringList() override;
 
         /**
          * getFilePath()
@@ -67,7 +67,7 @@ namespace vToolKit{
          * @return string : The file path passed to the constructor that
          * identifies this file.
          */
-        string getFilePath();
+        string getFilePath() override;
 
     private:
         string _file_path;

@@ -29,12 +29,12 @@ namespace vToolKit
          * Setting the log file's path to "" will force logging to stdlog and
          * stderr streams instead of a file.
          */
-        explicit fileLog(IReadWriteFile *log_file);
+        fileLog(IReadWriteFile *log_file);
 
         /**
          * Without a parameter, logs default to stder.
          */
-        explicit fileLog();
+        fileLog();
 
         /**
          * @param string func : The calling method name. Gcc compilers can
@@ -43,7 +43,8 @@ namespace vToolKit
          * compilers can use __LINE__.
          * @param string msg : The entry to add to the log.
          */
-        void logInfo(string func, int line, string msg);
+        void logInfo(string func, int line, string msg) override;
+        void logInfo(string func, int line, QString msg) override;
 
         /**
          * @param string func : The calling method name. Gcc compilers can
@@ -52,7 +53,8 @@ namespace vToolKit
          * compilers can use __LINE__.
          * @param string msg : The entry to add to the log.
          */
-        void logDebug(string func, int line, string msg);
+        void logDebug(string func, int line, string msg) override;
+        void logDebug(string func, int line, QString msg) override;
 
         /**
          * @param string func : The calling method name. Gcc compilers can
@@ -61,7 +63,8 @@ namespace vToolKit
          * compilers can use __LINE__.
          * @param string msg : The entry to add to the log.
          */
-        void logWarn(string func, int line, string msg);
+        void logWarn(string func, int line, string msg) override;
+        void logWarn(string func, int line, QString msg) override;
 
         /**
          * @param string func : The calling method name. Gcc compilers can
@@ -71,7 +74,7 @@ namespace vToolKit
          * @param exception ex : The exception for this error. The log entry
          * will be obtained from exception::what().
          */
-        void logError(string func, int line, exception ex);
+        void logError(string func, int line, exception ex) override;
 
         /**
          * @param string func : The calling method name. Gcc compilers can
@@ -80,7 +83,9 @@ namespace vToolKit
          * compilers can use __LINE__.
          * @param string msg : The entry to add to the log.
          */
-        void logError(string func, int line, string msg);
+        void logError(string func, int line, string msg) override;
+        void logError(string func, int line, QString msg) override;
+        void logError(QxException ex) override;
 
         /**
          * @param string func : The calling method name. Gcc compilers can
@@ -90,7 +95,7 @@ namespace vToolKit
          * @param exception ex : The exception for this error. The log entry
          * will be obtained from exception::what().
          */
-        void logFatal(string func, int line, exception ex);
+        void logFatal(string func, int line, exception ex) override;
 
         /**
          * @param string func : The calling method name. Gcc compilers can
@@ -99,7 +104,9 @@ namespace vToolKit
          * compilers can use __LINE__.
          * @param string msg : The entry to add to the log.
          */
-        void logFatal(string func, int line, string msg);
+        void logFatal(string func, int line, string msg) override;
+        void logFatal(string func, int line, QString msg) override;
+        void logFatal(QxException ex) override;
 
     private:
 

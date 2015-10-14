@@ -5,6 +5,8 @@
 #include <exception>
 #include <string>
 
+#include "qxexception.h"
+
 #ifndef CLOG_ILOG_H
 #define CLOG_ILOG_H
 
@@ -27,6 +29,7 @@ namespace vToolKit{
          * @param string msg : The entry to add to the log.
          */
         virtual void logInfo(string func, int line, string msg) = 0;
+        virtual void logInfo(string func, int line, QString msg) = 0;
 
         /**
          * @param string func : The calling method name. Gcc compilers can
@@ -36,6 +39,7 @@ namespace vToolKit{
          * @param string msg : The entry to add to the log.
          */
         virtual void logDebug(string func, int line, string msg) = 0;
+        virtual void logDebug(string func, int line, QString msg) = 0;
 
         /**
          * @param string func : The calling method name. Gcc compilers can
@@ -45,6 +49,7 @@ namespace vToolKit{
          * @param string msg : The entry to add to the log.
          */
         virtual void logWarn(string func, int line, string msg) = 0;
+        virtual void logWarn(string func, int line, QString msg) = 0;
 
         /**
          * @param string func : The calling method name. Gcc compilers can
@@ -64,6 +69,8 @@ namespace vToolKit{
          * @param string msg : The entry to add to the log.
          */
         virtual void logError(string func, int line, string msg) = 0;
+        virtual void logError(string func, int line, QString msg) = 0;
+        virtual void logError(QxException ex) = 0;
 
         /**
          * @param string func : The calling method name. Gcc compilers can
@@ -83,6 +90,8 @@ namespace vToolKit{
          * @param string msg : The entry to add to the log.
          */
         virtual void logFatal(string func, int line, string msg) = 0;
+        virtual void logFatal(string func, int line, QString msg) = 0;
+        virtual void logFatal(QxException ex) = 0;
     };
 
 }

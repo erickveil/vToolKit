@@ -10,11 +10,26 @@ namespace vToolKit{
 
     }
 
+    void testLog::logInfo(string func, int line, QString msg)
+    {
+
+    }
+
     void testLog::logDebug(string func, int line, string msg) {
 
     }
 
+    void testLog::logDebug(string func, int line, QString msg)
+    {
+
+    }
+
     void testLog::logWarn(string func, int line, string msg) {
+
+    }
+
+    void testLog::logWarn(string func, int line, QString msg)
+    {
 
     }
 
@@ -30,7 +45,17 @@ namespace vToolKit{
 
     }
 
+    void testLog::logError(string func, int line, QString msg)
+    {
+
+    }
+
     void testLog::logFatal(string func, int line, string msg) {
+
+    }
+
+    void testLog::logFatal(string func, int line, QString msg)
+    {
 
     }
 

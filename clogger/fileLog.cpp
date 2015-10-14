@@ -14,14 +14,29 @@ namespace vToolKit{
         _logLog(log_line);
     }
 
+    void fileLog::logInfo(string func, int line, QString msg)
+    {
+        logInfo(func,line,msg.toStdString());
+    }
+
     void fileLog::logDebug(string func, int line, string msg) {
         string log_line=_buildLogLine("DEBUG", func, line, msg);
         _logLog(log_line);
     }
 
+    void fileLog::logDebug(string func, int line, QString msg)
+    {
+        logDebug(func,line,msg.toStdString());
+    }
+
     void fileLog::logWarn(string func, int line, string msg) {
         string log_line=_buildLogLine("WARN", func, line, msg);
         _logErr(log_line);
+    }
+
+    void fileLog::logWarn(string func, int line, QString msg)
+    {
+        logWarn(func,line,msg.toStdString());
     }
 
     void fileLog::logError(string func, int line, exception ex) {
@@ -34,6 +49,16 @@ namespace vToolKit{
         _logErr(log_line);
     }
 
+    void fileLog::logError(string func, int line, QString msg)
+    {
+        logError(func,line,msg.toStdString());
+    }
+
+    void fileLog::logError(QxException ex)
+    {
+        logError(ex.method().toStdString(), ex.line(), QString(ex.what()));
+    }
+
     void fileLog::logFatal(string func, int line, exception ex) {
         string log_line=_buildLogLine("FATAL", func, line, ex);
         _logErr(log_line);
@@ -42,6 +67,16 @@ namespace vToolKit{
     void fileLog::logFatal(string func, int line, string msg) {
         string log_line=_buildLogLine("FATAL", func, line, msg);
         _logErr(log_line);
+    }
+
+    void fileLog::logFatal(string func, int line, QString msg)
+    {
+        logFatal(func,line,msg.toStdString());
+    }
+
+    void fileLog::logFatal(QxException ex)
+    {
+        logFatal(ex.method().toStdString(), ex.line(), QString(ex.what()));
     }
 
     void fileLog::_logLog(string log_line) {

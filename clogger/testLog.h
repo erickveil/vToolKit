@@ -17,19 +17,33 @@ namespace vToolKit{
     class testLog : public iLog {
 
     public:
-        void logInfo(string func, int line, string msg);
+        void logInfo(string func, int line, string msg) override;
 
-        void logDebug(string func, int line, string msg);
+        void logInfo(string func, int line, QString msg) override;
 
-        void logWarn(string func, int line, string msg);
+        void logDebug(string func, int line, string msg) override;
 
-        void logError(string func, int line, exception ex);
+        void logDebug(string func, int line, QString msg) override;
 
-        void logError(string func, int line, string msg);
+        void logWarn(string func, int line, string msg) override;
 
-        void logFatal(string func, int line, exception ex);
+        void logWarn(string func, int line, QString msg) override;
 
-        void logFatal(string func, int line, string msg);
+        void logError(string func, int line, exception ex) override;
+
+        void logError(string func, int line, string msg) override;
+
+        void logError(string func, int line, QString msg) override;
+
+        void logError(QxException ex) override;
+
+        void logFatal(string func, int line, exception ex) override;
+
+        void logFatal(string func, int line, string msg) override;
+
+        void logFatal(string func, int line, QString msg) override;
+
+        void logFatal(QxException ex) override;
 
     };
 
