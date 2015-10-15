@@ -35,7 +35,8 @@ HEADERS += \
     FileCtl/IReadWriteFile.h \
     clogger/nulllog.h \
     IFlatFile/logfile.h \
-    version.h
+    version.h \
+    toolkitmacros.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

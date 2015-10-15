@@ -4,7 +4,7 @@ namespace vToolKit{
 
     LogFile::LogFile()
     {
-        throw new QxException(__PRETTY_FUNCTION__,__LINE__,
+        throw QxException(__PRETTY_FUNCTION__,__LINE__,
                               "Class implementation not complete.");
         //TODO: need null IReadWriteFile class
         //_source_file=new NullFile;
@@ -45,6 +45,9 @@ namespace vToolKit{
 
     void LogFile::deleteRecord(IFlatFileRecord &record)
     {
+        UNUSED(record);
+        throw QxException(__PRETTY_FUNCTION__,__LINE__,
+                          "Method not implemented.");
         _readyList();
         // logs do not have unique records to delete.
         // OR date line is unique id??
@@ -61,6 +64,9 @@ namespace vToolKit{
     // TODO: queryRecords should also be an interface method.
     IFlatFileRecord *LogFile::queryRecord(IFlatFileField &index_field)
     {
+        UNUSED(index_field);
+        throw QxException(__PRETTY_FUNCTION__,__LINE__,
+                          "Method not implemented.");
         _readyList();
 
         if(_record_list.isEmpty()) return new LogFileRecord;
@@ -82,16 +88,25 @@ namespace vToolKit{
     void LogFile::editField(IFlatFileField &index_field,
                             IFlatFileField &new_field)
     {
+        UNUSED(index_field);
+        UNUSED(new_field);
+        throw QxException(__PRETTY_FUNCTION__,__LINE__,
+                          "Method not implemented.");
 
     }
 
     void LogFile::saveFile()
     {
+        throw QxException(__PRETTY_FUNCTION__,__LINE__,
+                          "Method not implemented.");
 
     }
 
     void LogFile::saveFile(IReadWriteFile &destination_file)
     {
+        UNUSED(destination_file);
+        throw QxException(__PRETTY_FUNCTION__,__LINE__,
+                          "Method not implemented.");
 
     }
 

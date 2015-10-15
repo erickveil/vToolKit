@@ -8,6 +8,7 @@
 #include <exception>
 #include <string>
 
+#include "toolkitmacros.h"
 #include "qxexception.h"
 using namespace std;
 
@@ -19,6 +20,8 @@ namespace vToolKit{
     class iLog {
 
     public:
+
+        virtual ~iLog() {}
 
         /**
          * @param string func : The calling method name. Gcc compilers can

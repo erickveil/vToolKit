@@ -17,33 +17,83 @@ namespace vToolKit{
     class testLog : public iLog {
 
     public:
-        void logInfo(string func, int line, string msg) override {}
+        void logInfo(string func, int line, string msg) override {
+            UNUSED(func);
+            UNUSED(line);
+            UNUSED(msg);
+        }
 
-        void logInfo(string func, int line, QString msg) override {}
+        void logInfo(string func, int line, QString msg) override {
+            UNUSED(func);
+            UNUSED(line);
+            UNUSED(msg);
+        }
 
-        void logDebug(string func, int line, string msg) override {}
+        void logDebug(string func, int line, string msg) override {
+            UNUSED(func);
+            UNUSED(line);
+            UNUSED(msg);
+        }
 
-        void logDebug(string func, int line, QString msg) override {}
+        void logDebug(string func, int line, QString msg) override {
+            UNUSED(func);
+            UNUSED(line);
+            UNUSED(msg);
+        }
 
-        void logWarn(string func, int line, string msg) override {}
+        void logWarn(string func, int line, string msg) override {
+            UNUSED(func);
+            UNUSED(line);
+            UNUSED(msg);
+        }
 
-        void logWarn(string func, int line, QString msg) override {}
+        void logWarn(string func, int line, QString msg) override {
+            UNUSED(func);
+            UNUSED(line);
+            UNUSED(msg);
+        }
 
-        void logError(string func, int line, exception ex) override {}
+        void logError(string func, int line, exception ex) override {
+            UNUSED(func);
+            UNUSED(line);
+            UNUSED(ex);
+        }
 
-        void logError(string func, int line, string msg) override {}
+        void logError(string func, int line, string msg) override {
+            UNUSED(func);
+            UNUSED(line);
+            UNUSED(msg);
+        }
 
-        void logError(string func, int line, QString msg) override {}
+        void logError(string func, int line, QString msg) override {
+            UNUSED(func);
+            UNUSED(line);
+            UNUSED(msg);
+        }
 
-        void logError(QxException ex) override {}
+        void logError(QxException ex) override {
+            UNUSED(ex);
+        }
 
-        void logFatal(string func, int line, exception ex) override {}
+        void logFatal(string func, int line, exception ex) override {
+            UNUSED(func);
+            UNUSED(line);
+            UNUSED(ex);
+        }
 
-        void logFatal(string func, int line, string msg) override {}
+        void logFatal(string func, int line, string msg) override {
+            UNUSED(func);
+            UNUSED(line);
+            UNUSED(msg);
+        }
 
-        void logFatal(string func, int line, QString msg) override {}
+        void logFatal(string func, int line, QString msg) override {
+            UNUSED(func);
+            UNUSED(line);
+            UNUSED(msg);
+        }
 
-        void logFatal(QxException ex) override {}
+        void logFatal(QxException ex) override { UNUSED(ex); }
 
         bool isNull() override { return false; }
 
