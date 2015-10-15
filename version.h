@@ -1,3 +1,6 @@
+#ifndef VERSION_H
+#define VERSION_H
+
 /**
  *
  * version.h
@@ -9,7 +12,7 @@
  * To set the version, edit this file's values for VERSION_MAJOR and
  * VERSION_MINOR.
  *
- * Then, run setversion.sh to automaticaly set VERSION_COMMIT "0296817"
+ * Then, run setversion.sh to automaticaly set VERSION_COMMIT "db1391a"
  * current commit hash.
  *
  * Do this before each build.
@@ -17,18 +20,16 @@
  **/
 
 #include <string>
-
-#define VERSION_MAJOR 1
-#define VERSION_MINOR 1
-#define VERSION_COMMIT "0296817"
-
-#ifndef VERSION_H
-#define VERSION_H
+#include <iostream>
 
 using namespace std;
 
+#define VERSION_MAJOR 1
+#define VERSION_MINOR 1
+#define VERSION_COMMIT "db1391a"
 
-namespace vVersion{
+
+namespace vToolKit{
 
     string getVersion();
 

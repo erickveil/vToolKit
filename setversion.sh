@@ -12,4 +12,5 @@
 
 BUILD=$(git rev-parse --short HEAD)
 sed -i "s/VERSION_COMMIT.*$/VERSION_COMMIT \"${BUILD}\"/" version.h
+sed -i "s/string build.*$/string build=\"${BUILD}\";/" version.cpp
 

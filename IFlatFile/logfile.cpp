@@ -4,6 +4,8 @@ namespace vToolKit{
 
     LogFile::LogFile()
     {
+        throw new QxException(__PRETTY_FUNCTION__,__LINE__,
+                              "Class implementation not complete.");
         //TODO: need null IReadWriteFile class
         //_source_file=new NullFile;
     }
@@ -66,9 +68,12 @@ namespace vToolKit{
         // Just going to be lazy and linear search this list...
         int i;
         for(i=0; i<_record_list.size(); ++i){
+            // TODO: This should be an == implementation of IFlatFileField/Record.
+            /*
             IFlatFileRecord *record=&_record_list.at(i);
             IFlatFileField *field=record->getField(index_field.name());
             if(field->value()==index_field.value()) return record;
+            */
         }
 
         return new LogFileRecord;

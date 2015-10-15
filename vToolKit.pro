@@ -17,7 +17,8 @@ SOURCES += \
     IFlatFile/logfilerecord.cpp \
     FileCtl/TextFile.cpp \
     clogger/fileLog.cpp \
-    IFlatFile/logfile.cpp
+    IFlatFile/logfile.cpp \
+    version.cpp
 
 HEADERS += \
     clogger/iLog.h \
@@ -33,7 +34,8 @@ HEADERS += \
     clogger/fileLog.h \
     FileCtl/IReadWriteFile.h \
     clogger/nulllog.h \
-    IFlatFile/logfile.h
+    IFlatFile/logfile.h \
+    version.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
