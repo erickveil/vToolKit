@@ -62,9 +62,9 @@ namespace vToolKit{
     }
 
     // TODO: queryRecords should also be an interface method.
-    IFlatFileRecord *LogFile::queryRecord(IFlatFileField &index_field)
+    IFlatFileRecord *LogFile::queryRecord(QString index_name, QString index_value)
     {
-        UNUSED(index_field);
+        UNUSED(index_name);
         throw QxException(__PRETTY_FUNCTION__,__LINE__,
                           "Method not implemented.");
         _readyList();
@@ -85,11 +85,11 @@ namespace vToolKit{
         return new LogFileRecord;
     }
 
-    void LogFile::editField(IFlatFileField &index_field,
-                            IFlatFileField &new_field)
+    void LogFile::editField(QString field_name,
+                            QString query_value, QString new_value)
     {
-        UNUSED(index_field);
-        UNUSED(new_field);
+        UNUSED(field_name);
+        UNUSED(query_value);
         throw QxException(__PRETTY_FUNCTION__,__LINE__,
                           "Method not implemented.");
 

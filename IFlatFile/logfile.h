@@ -20,9 +20,9 @@ namespace vToolKit{
         void addRecord(IFlatFileRecord &record) override;
         void deleteRecord(IFlatFileRecord &record) override;
         void truncateFile() override;
-        IFlatFileRecord *queryRecord(IFlatFileField &index_field) override;
-        void editField(IFlatFileField &index_field, IFlatFileField &new_field)
-            override;
+        IFlatFileRecord *queryRecord(QString index_name, QString index_value) override;
+        void editField(QString field_name, QString query_value,
+                       QString new_value) override;
         void saveFile() override;
         void saveFile(IReadWriteFile &destination_file) override;
 

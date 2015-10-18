@@ -3,7 +3,6 @@
 
 #include <QString>
 
-#include "iflatfilefield.h"
 #include "nulllog.h"
 
 
@@ -13,8 +12,8 @@ namespace vToolKit{
     {
     public:
         virtual ~IFlatFileRecord() = 0;
-        virtual IFlatFileField * getField(QString field_name) = 0;
-        virtual void setField(IFlatFileField &field) = 0;
+        virtual QString getField(QString field_name) = 0;
+        virtual void setField(QString field_name, QString field_val) = 0;
         virtual bool isNull() = 0;
     };
 
