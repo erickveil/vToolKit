@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
         fileLog log(&log_file);
         SynchronousSocketClient ssc(&log);
 
-        ssc.setConnectInfo("127.0.0.1:50503",5000000);
+        ssc.setConnectInfo("127.0.0:50503",5000000);
         QString msg="test transmission";
         QString response=ssc.sendAndReceive(msg);
         qDebug()<<response;

@@ -91,7 +91,7 @@ namespace vToolKit{
 
         if(!is_connected){
             throw_msg=QString("Failed to connect to host: ")
-                    +_socket_address.toString()+" port: "+_port
+                    +_socket_address.toString()+" port: "+QString::number(_port)
                     +" timeout: "+QString::number(_timeout_ms)+" ms. "
                     +_resource.errorString();
             throw QxException(me,__LINE__,throw_msg);
