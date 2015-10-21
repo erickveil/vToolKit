@@ -5,7 +5,6 @@
 
 #include <QHostAddress>
 #include <QTcpSocket>
-#include <QUrl>
 
 #include "iLog.h"
 #include "italktolistener.h"
@@ -26,10 +25,10 @@ namespace vToolKit{
     {
     public:
         SynchronousSocketClient();
-        SynchronousSocketClient(iLog &log);
+        SynchronousSocketClient(iLog *log);
         ~SynchronousSocketClient() override;
 
-        void init(iLog &log);
+        void initClient(iLog *log);
         /**
          * @brief setConnectInfo
          *
@@ -44,7 +43,10 @@ namespace vToolKit{
         bool isNull() override;
 
     private:
-        QUrl _socket_address;
+        QString _provided_address;
+        QHostAddress _socket_address;
+        int _port;
+
         QTcpSocket _resource;
         int _timeout_ms;
         QByteArray _outbox;
@@ -59,6 +61,9 @@ namespace vToolKit{
         void _readBytesFromSocket(int bytes_available);
         void _doSendAndRecieve();
         void _clearBuffers();
+        void _validateFullAddress();
+        void _setHostAddress();
+        void _setPort();
 
     };
 

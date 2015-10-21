@@ -22,10 +22,9 @@ namespace vToolKit{
     {
 
     public:
-        ITalkToListener();
         virtual ~ITalkToListener() {}
 
-        virtual void init(iLog &log) = 0;
+        virtual void initClient(iLog *log) = 0;
         virtual void setConnectInfo(QString full_address, int timeout_ms) = 0;
         virtual QString sendAndReceive(QString msg) = 0;
         virtual QByteArray sendAndReceive(QByteArray msg) = 0;

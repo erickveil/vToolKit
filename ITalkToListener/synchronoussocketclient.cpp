@@ -9,9 +9,9 @@ namespace vToolKit{
         _log=new NullLog;
     }
 
-    SynchronousSocketClient::SynchronousSocketClient(iLog &log)
+    SynchronousSocketClient::SynchronousSocketClient(iLog *log)
     {
-        _log=&log;
+        _log=log;
     }
 
     SynchronousSocketClient::~SynchronousSocketClient()
@@ -20,16 +20,20 @@ namespace vToolKit{
         if(_log->isNull()) delete _log;
     }
 
-    void SynchronousSocketClient::init(iLog &log)
+    void SynchronousSocketClient::initClient(iLog *log)
     {
-        _log=&log;
+        _log=log;
     }
 
     void SynchronousSocketClient::setConnectInfo(QString full_address,
                                                  int timeout_ms)
     {
-        _socket_address.setUrl(full_address);
-        _validateAddressParameter();
+        _provided_address=full_address;
+        _validateFullAddress();
+
+        _setHostAddress();
+        _setPort();
+
         _timeout_ms=timeout_ms;
     }
 
@@ -59,17 +63,19 @@ namespace vToolKit{
 
     bool SynchronousSocketClient::isNull()
     {
-        return _socket_address.isEmpty();
+        return _socket_address.isNull();
     }
 
     void SynchronousSocketClient::_validateAddressParameter()
     {
-        if(_socket_address.isValid() && !_socket_address.host().isEmpty()) {
-            return;
-        }
+        bool is_valid=(
+                QAbstractSocket::IPv4Protocol==_socket_address.protocol()
+                || QAbstractSocket::IPv6Protocol==_socket_address.protocol());
+
+        if(is_valid) return;
 
         QString err_msg=QString("Socket address is not valid. ")
-                +"Provided address is: "+_socket_address.toDisplayString();
+                +"Provided address is: "+_socket_address.toString();
         throw QxException(__PRETTY_FUNCTION__,__LINE__,err_msg);
     }
 
@@ -80,24 +86,23 @@ namespace vToolKit{
         QString throw_msg;
 
         _validateConnectInfoSet();
-        QHostAddress listener_add( _socket_address.host() );
-        _resource.connectToHost( listener_add, _socket_address.port() );
+        _resource.connectToHost( _socket_address, _port );
         bool is_connected=_resource.waitForConnected(_timeout_ms);
 
         if(!is_connected){
             throw_msg=QString("Failed to connect to host: ")
-                    +_socket_address.host()+" port: "+_socket_address.port()
+                    +_socket_address.toString()+" port: "+_port
                     +" timeout: "+QString::number(_timeout_ms)+" ms. "
                     +_resource.errorString();
             throw QxException(me,__LINE__,throw_msg);
         }
 
         bool is_success=(_resource.write(_outbox)!=-1);
-        bool is_timeout=_resource.waitForBytesWritten(_timeout_ms);
+        bool is_timeout=!_resource.waitForBytesWritten(_timeout_ms);
 
         if(is_timeout){
             throw_msg=QString("Socket write timed out: ")
-                    +_socket_address.toDisplayString()+" messge: "+_outbox
+                    +_provided_address+" messge: "+_outbox
                     +" timeout: "+QString::number(_timeout_ms)+" ms "
                     +_resource.errorString();
             throw QxException(me,__LINE__,throw_msg);
@@ -106,13 +111,13 @@ namespace vToolKit{
 
         if(!is_success){
             throw_msg=QString("Failed to write to host: ")
-                    +_socket_address.toDisplayString()+" messge: "+_outbox
+                    +_provided_address+" messge: "+_outbox
                     +" "+_resource.errorString();
             throw QxException(me,__LINE__,throw_msg);
         }
 
-        QString debug=QString("Sent: ")+_outbox+" to: "
-                +_socket_address.toDisplayString()+" hex: "+_outbox.toHex();
+        QString debug=QString("Sent: <<")+_outbox+">> to: "
+                +_provided_address+" hex: "+_outbox.toHex();
         _log->logDebug(__PRETTY_FUNCTION__,__LINE__,debug);
     }
 
@@ -129,8 +134,8 @@ namespace vToolKit{
         int bytes_available=_waitForInput();
         if(bytes_available > 0) _readBytesFromSocket(bytes_available);
 
-        QString debug=QString("Received: ")+_response+" From: "
-                +_socket_address.toDisplayString()+" hex: "+_outbox.toHex();
+        QString debug=QString("Received: <<")+_response+">> From: "
+                +_provided_address+" hex: "+_response.toHex();
         _log->logDebug(__PRETTY_FUNCTION__,__LINE__,debug);
 
         return _response;
@@ -174,6 +179,34 @@ namespace vToolKit{
     {
         _outbox.clear();
         _response.clear();
+    }
+
+    void SynchronousSocketClient::_validateFullAddress()
+    {
+        QStringList split_addy=_provided_address.split(":");
+        if(split_addy.size()==2) return;
+        QString msg=QString("Provided address format is bad. Should be in ")
+                +"the 'host:port' form. Address: "
+                +_provided_address;
+        throw QxException(__PRETTY_FUNCTION__,__LINE__,msg);
+    }
+
+    void SynchronousSocketClient::_setHostAddress()
+    {
+        QStringList split_addy=_provided_address.split(":");
+        _socket_address.setAddress(split_addy.at(0));
+        _validateAddressParameter();
+    }
+
+    void SynchronousSocketClient::_setPort()
+    {
+        QStringList split_addy=_provided_address.split(":");
+        bool is_converted;
+        _port=split_addy.at(1).toInt(&is_converted);
+        if(is_converted) return;
+        QString msg=QString("Port is invalid: ")+split_addy.at(1)
+                +" from provided address: "+_provided_address;
+        throw QxException(__PRETTY_FUNCTION__,__LINE__,msg);
     }
 
 
