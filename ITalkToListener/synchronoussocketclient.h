@@ -9,6 +9,7 @@
 
 #include "iLog.h"
 #include "italktolistener.h"
+#include "nulllog.h"
 #include "qxexception.h"
 
 
@@ -28,6 +29,7 @@ namespace vToolKit{
         SynchronousSocketClient(iLog &log);
         ~SynchronousSocketClient() override;
 
+        void init(iLog &log);
         /**
          * @brief setConnectInfo
          *
