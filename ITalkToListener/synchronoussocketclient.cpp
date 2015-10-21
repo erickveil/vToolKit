@@ -75,7 +75,7 @@ namespace vToolKit{
         if(is_valid) return;
 
         QString err_msg=QString("Socket address is not valid. ")
-                +"Provided address is: "+_socket_address.toString();
+                +"Provided address is: "+_provided_address;
         throw QxException(__PRETTY_FUNCTION__,__LINE__,err_msg);
     }
 
