@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QByteArray>
+#include <QObject>
 
 
 namespace vToolKit{
@@ -18,7 +19,7 @@ namespace vToolKit{
      * Since the responses are returned, an ITalkToListener based class is
      * unlikely to be concurrent if a response is expected.
      */
-    class ITalkToListener
+    class ITalkToListener : public QObject
     {
 
     public:
