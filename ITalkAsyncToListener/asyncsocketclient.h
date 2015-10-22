@@ -15,7 +15,6 @@ namespace vToolKit{
             , public ITalkAsyncToListener
     {
         Q_OBJECT
-        //Q_INTERFACES(ITalkAsyncToListener)
     public:
         AsyncSocketClient(QObject *parent = 0);
         ~AsyncSocketClient() override;

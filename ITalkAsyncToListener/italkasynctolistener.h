@@ -3,6 +3,7 @@
 
 #include "iLog.h"
 #include "italktolistener.h"
+#include "irunconcurrent.h"
 
 
 namespace vToolKit{
@@ -14,19 +15,13 @@ namespace vToolKit{
      * allows continuation of the current thread, emitting a signal when the
      * exchange is complete.
      */
-    class ITalkAsyncToListener
+    class ITalkAsyncToListener : public IRunConcurrent
     {
     public:
         virtual ~ITalkAsyncToListener() {}
 
         virtual void initClient(iLog *log, QString id, ITalkToListener *client,
                                 QByteArray msg) = 0;
-        virtual void startWorker() = 0;
-        virtual bool isNull() = 0;
-
-    public slots:
-        virtual void eventThreadStart() = 0;
-        virtual void eventThreadFinished() = 0;
 
     signals:
         /**
@@ -46,8 +41,5 @@ namespace vToolKit{
 
 
 }
-
-//using namespace vToolKit;
-//Q_DECLARE_INTERFACE(ITalkAsyncToListener, "ITalkAsyncToListener")
 
 #endif // ITALKASYNCTOLISTENER_H

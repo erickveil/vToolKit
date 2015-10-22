@@ -26,10 +26,8 @@ namespace vToolKit{
      *
      * You will still need to lock any shared variables if using them.
      */
-    class IRunConcurrent : public QObject
+    class IRunConcurrent
     {
-        Q_OBJECT
-
     public:
         /**
          * @brief ~IRunConcurrent
@@ -37,24 +35,7 @@ namespace vToolKit{
          * Calls an QThread::exit() and QThread::wait() on
          * IRunConcurrent::_thread if it is still running.
          */
-        virtual ~IRunConcurrent();
-
-        /**
-         * @brief initThread
-         *
-         * Connects QThread::started() and QThread::finished() signals to
-         * IRunConcurrent::evventThreadStart() and
-         * IRunConcurrent::eventThreadFinished(), respectively.
-         *
-         * Children who inherit this interface must have an initialization
-         * method which
-         *
-         * 1. Assigns a worker class
-         *
-         * invokes IRunConcurrent::initThread() in its
-         * implementation.
-         */
-        void initThread(QObject worker_obj);
+        virtual ~IRunConcurrent() {}
 
         /**
          * @brief startThread
@@ -62,7 +43,8 @@ namespace vToolKit{
          * Simply invokes QThread::start() on the thread, which begins
          * the operation.
          */
-        void startThread();
+        virtual void startWorker() = 0;
+        virtual bool isNull() = 0;
 
     public slots:
         /**
@@ -85,9 +67,6 @@ namespace vToolKit{
          */
         virtual void eventThreadFinished() = 0;
 
-    protected:
-        QThread _this_thread;
-        QObject _worker;
     };
 }
 
