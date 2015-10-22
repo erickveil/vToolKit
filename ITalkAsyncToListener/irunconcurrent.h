@@ -42,8 +42,22 @@ namespace vToolKit{
          *
          * Simply invokes QThread::start() on the thread, which begins
          * the operation.
+         *
+         * The class should be first initialized with a worker class and
+         * any other necessary data, using a class-specific initializer.
          */
         virtual void startWorker() = 0;
+
+        /**
+         * @brief isNull
+         *
+         * The class is null if it has not yet been initialized.
+         *
+         * A good test of null is if the worker class has not been
+         * assigned and returns true on isNull.
+         *
+         * @return bool : True if this is a null object.
+         */
         virtual bool isNull() = 0;
 
     public slots:
