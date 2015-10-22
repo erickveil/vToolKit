@@ -27,6 +27,21 @@ namespace vToolKit{
     public slots:
         virtual void eventThreadStart() = 0;
         virtual void eventThreadFinished() = 0;
+
+    signals:
+        /**
+         * @brief finishedTalking
+         *
+         * Signal to be emitted when the query is complete.
+         *
+         * Seems to only work if overridden in the child class.
+         *
+         * @param id QString : An id to identify the thread/worker who is
+         * responding, in case there are a lot of similar querries going out
+         * at once.
+         * @param response
+         */
+        void finishedTalking(QString id, QByteArray response);
     };
 
 

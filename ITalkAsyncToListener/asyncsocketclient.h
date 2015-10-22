@@ -18,7 +18,7 @@ namespace vToolKit{
         //Q_INTERFACES(ITalkAsyncToListener)
     public:
         AsyncSocketClient(QObject *parent = 0);
-        ~AsyncSocketClient();
+        ~AsyncSocketClient() override;
 
         /**
          * @brief initClient
@@ -33,14 +33,14 @@ namespace vToolKit{
          * @param msg QByteArray : The message to send to the listener.
          */
         void initClient(iLog *log, QString id, ITalkToListener *client,
-                        QByteArray msg);
+                        QByteArray msg) override;
 
-        void startWorker();
-        bool isNull();
+        void startWorker() override;
+        bool isNull() override;
 
     public slots:
-        void eventThreadStart();
-        void eventThreadFinished();
+        void eventThreadStart() override;
+        void eventThreadFinished() override;
 
     signals:
         void finishedTalking(QString id, QByteArray response);

@@ -43,6 +43,8 @@ HEADERS += \
     ../../FileCtl/TextFile.h \
     ../../ITalkToListener/italktolistener.h \
     ../../ITalkToListener/synchronoussocketclient.h \
+    ../../ITalkToListener/italkasynctolistener.h \
     ../../ExtendedException/qxexception.h \
     ../../ExtendedException/qxfatalexception.h \
-    responsereader.h
+    responsereader.h \
+    ../italkasynctolistener.h
