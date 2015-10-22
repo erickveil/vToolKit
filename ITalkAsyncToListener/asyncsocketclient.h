@@ -8,7 +8,6 @@
 #include "italktolistener.h"
 #include "italkasynctolistener.h"
 
-//using namespace vToolKit;
 namespace vToolKit{
 
     class AsyncSocketClient
@@ -16,7 +15,7 @@ namespace vToolKit{
             , public ITalkAsyncToListener
     {
         Q_OBJECT
-        Q_INTERFACES(ITalkAsyncToListener)
+        //Q_INTERFACES(ITalkAsyncToListener)
     public:
         AsyncSocketClient(QObject *parent = 0);
         ~AsyncSocketClient();

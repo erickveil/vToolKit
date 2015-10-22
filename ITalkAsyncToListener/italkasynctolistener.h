@@ -5,7 +5,6 @@
 #include "italktolistener.h"
 
 
-using namespace vToolKit;
 namespace vToolKit{
 
     /**
@@ -33,7 +32,7 @@ namespace vToolKit{
 
 }
 
-using namespace vToolKit;
-Q_DECLARE_INTERFACE(ITalkAsyncToListener, "ITalkAsyncToListener")
+//using namespace vToolKit;
+//Q_DECLARE_INTERFACE(ITalkAsyncToListener, "ITalkAsyncToListener")
 
 #endif // ITALKASYNCTOLISTENER_H
