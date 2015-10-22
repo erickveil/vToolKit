@@ -5,7 +5,6 @@
 #include <QStringList>
 
 #include "iflatfilerecord.h"
-#include "logfilefield.h"
 #include "iLog.h"
 
 
@@ -17,24 +16,26 @@ namespace vToolKit{
         LogFileRecord();
         LogFileRecord(QString record_str, iLog &log);
         ~LogFileRecord() override;
+
         void initRecord(QString record_str, iLog &log);
-        IFlatFileField * getField(QString field_name) override;
-        void setField(IFlatFileField &field) override;
+        QString getField(QString field_name) override;
+        void setField(QString field_name, QString field_val) override;
         bool isNull() override;
 
     private:
-        IFlatFileField *_level;
-        IFlatFileField *_timestamp;
-        IFlatFileField *_pid;
-        IFlatFileField *_method;
-        IFlatFileField *_line;
-        IFlatFileField *_message;
+        QString _level;
+        QString _timestamp;
+        QString _pid;
+        QString _method;
+        QString _line;
+        QString _message;
+
         QString _record_str;
         iLog *_log;
 
         void _initNullRecord();
         void _constructRecordFromString();
-        LogFileField *_buildLongMessage(QStringList full_record_list);
+        QString _buildLongMessage(QStringList full_record_list);
     };
 
 }

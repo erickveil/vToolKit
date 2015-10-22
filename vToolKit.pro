@@ -14,7 +14,6 @@ CONFIG += staticlib
 SOURCES += \
     ExtendedException/qxfatalexception.cpp \
     ExtendedException/qxexception.cpp \
-    IFlatFile/logfilefield.cpp \
     IFlatFile/logfilerecord.cpp \
     FileCtl/TextFile.cpp \
     clogger/fileLog.cpp \
@@ -27,8 +26,6 @@ HEADERS += \
     ExtendedException/qxfatalexception.h \
     ExtendedException/qxexception.h \
     IFlatFile/iflatfilerecord.h \
-    IFlatFile/iflatfilefield.h \
-    IFlatFile/logfilefield.h \
     IFlatFile/iflatfile.h \
     IFlatFile/logfilerecord.h \
     FileCtl/TextFile.h \

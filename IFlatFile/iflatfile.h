@@ -2,7 +2,6 @@
 #define IFLATFILE_H
 
 #include "iflatfilerecord.h"
-#include "iflatfilefield.h"
 #include "IReadWriteFile.h"
 
 
@@ -19,9 +18,10 @@ namespace vToolKit{
         virtual void addRecord(IFlatFileRecord &record) = 0;
         virtual void deleteRecord(IFlatFileRecord &record) = 0;
         virtual void truncateFile() = 0;
-        virtual IFlatFileRecord * queryRecord(IFlatFileField &index_field) = 0;
-        virtual void editField(IFlatFileField &index_field,
-                               IFlatFileField &new_field) = 0;
+        virtual IFlatFileRecord * queryRecord(QString index_name,
+                                              QString index_value) = 0;
+        virtual void editField(QString field_name, QString query_value,
+                               QString new_value) = 0;
         virtual void saveFile() = 0;
         virtual void saveFile(IReadWriteFile &destination_file) = 0;
     };
