@@ -2,7 +2,8 @@
 
 namespace vToolKit{
 
-    AsyncSocketClient::AsyncSocketClient(QObject *parent) : QObject(parent)
+    AsyncSocketClient::AsyncSocketClient(QObject *parent)
+        : QObject(parent)
     {
         connect (
                     &_thread, SIGNAL( started() ),
@@ -19,8 +20,6 @@ namespace vToolKit{
         _thread.exit();
         _thread.wait();
     }
-
-
 
     void AsyncSocketClient::initClient(iLog *log, QString id,
                                        ITalkToListener *client, QByteArray msg)

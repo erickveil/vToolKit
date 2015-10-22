@@ -6,15 +6,19 @@
 
 #include "iLog.h"
 #include "italktolistener.h"
+#include "italkasynctolistener.h"
 
-
+//using namespace vToolKit;
 namespace vToolKit{
 
-    class AsyncSocketClient : public QObject
+    class AsyncSocketClient
+            : public QObject
+            , public ITalkAsyncToListener
     {
         Q_OBJECT
+        Q_INTERFACES(ITalkAsyncToListener)
     public:
-        explicit AsyncSocketClient(QObject *parent = 0);
+        AsyncSocketClient(QObject *parent = 0);
         ~AsyncSocketClient();
 
         /**
@@ -35,12 +39,12 @@ namespace vToolKit{
         void startWorker();
         bool isNull();
 
-    signals:
-        void finishedTalking(QString id, QByteArray response);
-
     public slots:
         void eventThreadStart();
         void eventThreadFinished();
+
+    signals:
+        void finishedTalking(QString id, QByteArray response);
 
     private:
         iLog *_log;
