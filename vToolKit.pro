@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       -= gui
+QT += network
 
 TARGET = vToolKit
 TEMPLATE = lib
@@ -18,7 +19,8 @@ SOURCES += \
     FileCtl/TextFile.cpp \
     clogger/fileLog.cpp \
     IFlatFile/logfile.cpp \
-    version.cpp
+    version.cpp \
+    ITalkToListener/synchronoussocketclient.cpp
 
 HEADERS += \
     clogger/iLog.h \
@@ -36,7 +38,10 @@ HEADERS += \
     clogger/nulllog.h \
     IFlatFile/logfile.h \
     version.h \
-    toolkitmacros.h
+    toolkitmacros.h \
+    ITalkToListener/italktolistener.h \
+    ITalkToListener/synchronoussocketclient.h
+
 unix {
     target.path = /usr/lib
     INSTALLS += target
@@ -46,6 +51,7 @@ INCLUDEPATH += ./clogger \
     ./ExtendedException \
     ./FileCtl \
     ./IFlatFile \
+    ./ITalkToListener
 
 QMAKE_CXXFLAGS += -std=c++11
 
