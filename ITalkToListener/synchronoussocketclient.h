@@ -24,7 +24,6 @@ namespace vToolKit{
     class SynchronousSocketClient : public ITalkToListener
     {
     public:
-        SynchronousSocketClient();
         SynchronousSocketClient(iLog *log);
         ~SynchronousSocketClient() override;
 

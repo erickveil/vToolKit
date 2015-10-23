@@ -3,12 +3,6 @@
 
 namespace vToolKit{
 
-
-    SynchronousSocketClient::SynchronousSocketClient()
-    {
-        _log=new NullLog;
-    }
-
     SynchronousSocketClient::SynchronousSocketClient(iLog *log)
     {
         _log=log;
@@ -18,11 +12,6 @@ namespace vToolKit{
     {
         if(_resource.isOpen()) _resource.close();
         if(_log->isNull()) delete _log;
-    }
-
-    void SynchronousSocketClient::initClient(iLog *log)
-    {
-        _log=log;
     }
 
     void SynchronousSocketClient::setConnectInfo(QString full_address,
