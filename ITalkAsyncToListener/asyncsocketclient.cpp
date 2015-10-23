@@ -2,9 +2,12 @@
 
 namespace vToolKit{
 
-    AsyncSocketClient::AsyncSocketClient(QObject *parent)
+    AsyncSocketClient::AsyncSocketClient(iLog *log, QString id,
+                                         ITalkToListener *client,
+                                         QByteArray msg, QObject *parent)
         : QObject(parent)
     {
+        _initClient(log,id,client,msg);
         connect (
                     &_thread, SIGNAL( started() ),
                     this, SLOT( eventThreadStart() )
@@ -21,7 +24,7 @@ namespace vToolKit{
         _thread.wait();
     }
 
-    void AsyncSocketClient::initClient(iLog *log, QString id,
+    void AsyncSocketClient::_initClient(iLog *log, QString id,
                                        ITalkToListener *client, QByteArray msg)
     {
         _log=log;

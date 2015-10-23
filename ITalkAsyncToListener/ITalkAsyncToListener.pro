@@ -11,8 +11,7 @@ TARGET = ITalkAsyncToListener
 TEMPLATE = lib
 CONFIG += staticlib
 
-SOURCES += italkasynctolistener.cpp \
-    irunconcurrent.cpp \
+SOURCES += \
     asyncsocketclient.cpp \
     ../ITalkToListener/synchronoussocketclient.cpp
 

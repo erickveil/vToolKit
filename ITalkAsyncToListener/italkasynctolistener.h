@@ -20,23 +20,6 @@ namespace vToolKit{
     public:
         virtual ~ITalkAsyncToListener() {}
 
-        /**
-         * @brief initClient
-         *
-         * Initializes the class with the data necessary to start its job.
-         *
-         * @param log iLog : Responsible for logging.
-         * @param id QString : Provide an id for the thread/worker. This id is
-         * emitted with the qurey result and helps a connected slot to decide
-         * which thread/worker returned the data.
-         * @param client ITalkToListener : The worker class to be assigned to
-         * the thread.
-         * @param msg QByteArray : The query string or data to be sent over the
-         * socket.
-         */
-        virtual void initClient(iLog *log, QString id, ITalkToListener *client,
-                                QByteArray msg) = 0;
-
     signals:
         /**
          * @brief finishedTalking
