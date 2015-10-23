@@ -27,7 +27,6 @@ namespace vToolKit{
         SynchronousSocketClient(iLog *log);
         ~SynchronousSocketClient() override;
 
-        void initClient(iLog *log);
         /**
          * @brief setConnectInfo
          *
