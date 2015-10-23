@@ -19,7 +19,8 @@ SOURCES += \
     clogger/fileLog.cpp \
     IFlatFile/logfile.cpp \
     version.cpp \
-    ITalkToListener/synchronoussocketclient.cpp
+    ITalkToListener/synchronoussocketclient.cpp \
+    ITalkAsyncToListener/asyncsocketclient.cpp
 
 HEADERS += \
     clogger/iLog.h \
@@ -36,8 +37,11 @@ HEADERS += \
     IFlatFile/logfile.h \
     version.h \
     toolkitmacros.h \
-    ITalkToListener/italktolistener.h \
-    ITalkToListener/synchronoussocketclient.h
+    ITalkToListener/synchronoussocketclient.h \
+    ITalkAsyncToListener/asyncsocketclient.h \
+    ITalkAsyncToListener/irunconcurrent.h \
+    ITalkAsyncToListener/italkasynctolistener.h \
+    ITalkToListener/italktolistener.h
 
 unix {
     target.path = /usr/lib
@@ -48,7 +52,8 @@ INCLUDEPATH += ./clogger \
     ./ExtendedException \
     ./FileCtl \
     ./IFlatFile \
-    ./ITalkToListener
+    ./ITalkToListener \
+    ./ITalkAsyncToListener
 
 QMAKE_CXXFLAGS += -std=c++11
 

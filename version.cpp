@@ -5,7 +5,7 @@
 #include "version.h"
 
 string vToolKit::getVersion() {
-    string build="cc5b9c3";
+    string build="2e14cd1";
     if(build.compare(VERSION_COMMIT)!=0){
         cerr<<"WARNING: Build version "<<build
            <<" does not match headder version "<<VERSION_COMMIT<<endl;
