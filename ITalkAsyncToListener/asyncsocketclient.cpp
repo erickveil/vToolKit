@@ -7,15 +7,11 @@ namespace vToolKit{
                                          QByteArray msg, QObject *parent)
         : QObject(parent)
     {
-        _initClient(log,id,client,msg);
-        connect (
-                    &_thread, SIGNAL( started() ),
-                    this, SLOT( eventThreadStart() )
-                    );
-        connect (
-                    &_thread, SIGNAL( finished() ),
-                    this, SLOT( eventThreadFinished() )
-                    );
+        _log=log;
+        _worker_id=id;
+        _client=client;
+        _msg=msg;
+        _is_connected=false;
     }
 
     AsyncSocketClient::~AsyncSocketClient()
@@ -24,26 +20,16 @@ namespace vToolKit{
         _thread.wait();
     }
 
-    void AsyncSocketClient::_initClient(iLog *log, QString id,
-                                       ITalkToListener *client, QByteArray msg)
-    {
-        _log=log;
-        _worker_id=id;
-        _client=client;
-        _msg=msg;
-
-        _client->moveToThread(&_thread);
-    }
-
     void AsyncSocketClient::startWorker()
     {
-        _validateInitCalled();
+        _lazyConnectSlots();
+        _client->moveToThread(&_thread);
         _thread.start();
     }
 
     bool AsyncSocketClient::isNull()
     {
-        return _client->isNull();
+        return false;
     }
 
     void AsyncSocketClient::eventThreadStart()
@@ -63,11 +49,18 @@ namespace vToolKit{
         _thread.exit();
     }
 
-    void AsyncSocketClient::_validateInitCalled()
+    void AsyncSocketClient::_lazyConnectSlots()
     {
-        if(!isNull()) return;
-        QString msg="Attempt to start async client without initializing.";
-        throw QxException(__PRETTY_FUNCTION__,__LINE__,msg);
+        if(_is_connected) return;
+        connect (
+                    &_thread, SIGNAL( started() ),
+                    this, SLOT( eventThreadStart() )
+                    );
+        connect (
+                    &_thread, SIGNAL( finished() ),
+                    this, SLOT( eventThreadFinished() )
+                    );
+        _is_connected=true;
     }
 
 }

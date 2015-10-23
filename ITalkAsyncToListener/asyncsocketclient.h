@@ -16,6 +16,19 @@ namespace vToolKit{
     {
         Q_OBJECT
     public:
+        /**
+         * @brief AsyncSocketClient
+         *
+         * @param log iLog : Responsible for logging in this class.
+         * @param id QString : A unique identifier for this worker. That way,
+         * if multiple threads of similar tasks are started, the slot can
+         * decide what to do with the data when the response is emitted on a
+         * signal.
+         * @param client ITalkToListener : Should already have initClient()
+         * called on it already.
+         * @param msg QByteArray : The message to send to the listener.
+         * @param parent
+         */
         AsyncSocketClient(iLog *log, QString id, ITalkToListener *client,
                           QByteArray msg, QObject *parent = 0);
         ~AsyncSocketClient() override;
@@ -35,25 +48,9 @@ namespace vToolKit{
         ITalkToListener *_client;
         QByteArray _msg;
         QThread _thread;
+        bool _is_connected;
         void _sendMessage();
-        void _validateInitCalled();
-
-
-        /**
-         * @brief initClient
-         *
-         * @param log iLog : Responsible for logging in this class.
-         * @param id QString : A unique identifier for this worker. That way,
-         * if multiple threads of similar tasks are started, the slot can
-         * decide what to do with the data when the response is emitted on a
-         * signal.
-         * @param client ITalkToListener : Should already have initClient()
-         * called on it already.
-         * @param msg QByteArray : The message to send to the listener.
-         */
-        void _initClient(iLog *log, QString id, ITalkToListener *client,
-                        QByteArray msg);
-
+        void _lazyConnectSlots();
     };
 
 }
