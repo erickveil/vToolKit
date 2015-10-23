@@ -16,10 +16,10 @@ int main(int argc, char *argv[])
 
         TextFile log_file("test.log");
         fileLog log(&log_file);
-        SynchronousSocketClient ssc(&log);
-
-        //ssc.setConnectInfo("192.168.60.128:502",2000);
-        ssc.setConnectInfo("127.0.0.1:50503",2000);
+        QHostAddress host("192.168.60.128");
+        int port=502;
+        int timeout=5000;
+        SynchronousSocketClient ssc(&log,host,port,timeout);
 
         const char  MPRR[12]={'\0','\0','\0','\0','\0','\06','\0','\03','\0','\0','\0','\01'};
 

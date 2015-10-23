@@ -24,44 +24,33 @@ namespace vToolKit{
     class SynchronousSocketClient : public ITalkToListener
     {
     public:
-        SynchronousSocketClient(iLog *log);
+        SynchronousSocketClient(iLog *log, QHostAddress host, int port,
+                                int timeout_ms);
         ~SynchronousSocketClient() override;
 
-        /**
-         * @brief setConnectInfo
-         *
-         * @param full_address QString : Provide the full socket address in
-         * IPv4 format, with the port separated with a colon.
-         * ie: 127.0.0.1:50000
-         */
-        void setConnectInfo(QString full_address, int timeout_ms) override;
         QString sendAndReceive(QString msg) override;
         QByteArray sendAndReceive(QByteArray msg) override;
         char * sendAndReceive(char* msg, int msg_len) override;
         bool isNull() override;
 
     private:
-        QString _provided_address;
+        iLog *_log;
         QHostAddress _socket_address;
         int _port;
-
-        QTcpSocket _resource;
         int _timeout_ms;
         QByteArray _outbox;
         QByteArray _response;
-        iLog *_log;
+        QTcpSocket _resource;
 
-        void _validateAddressParameter();
+        void _validateHostAddress();
         void _sendData();
-        void _validateConnectInfoSet();
         QByteArray _receiveResponse();
         int _waitForInput();
         void _readBytesFromSocket(int bytes_available);
         void _doSendAndRecieve();
         void _clearBuffers();
         void _validateFullAddress();
-        void _setHostAddress();
-        void _setPort();
+        QString _getLogableData();
 
     };
 

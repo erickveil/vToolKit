@@ -16,9 +16,13 @@ int main(int argc, char *argv[])
 
     TextFile log_file("test.log");
     fileLog log(&log_file);
-    SynchronousSocketClient worker(&log);
-    worker.setConnectInfo("127.0.0.1:50503", 5000);
+    QHostAddress host("127.0.0.1");
+    int port=50503;
+    int timeout=5000;
+    SynchronousSocketClient worker(&log,host,port,timeout);
     AsyncSocketClient ac(&log, "my client", &worker, "This is a test.");
+    // The Response Reader allows me to connect it as an object with a slot
+    // to the signal that receives the response from the socket.
     ResponseReader rr(&ac);
     ac.startWorker();
     qDebug()<<"Started worker. Printing from main thread.";
