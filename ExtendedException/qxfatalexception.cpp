@@ -2,13 +2,33 @@
 
 namespace vToolKit{
 
-QxFatalException::QxFatalException(const char *method, int line,
-                                   QString what_arg)
-    : QxException(method, line, what_arg) {  }
+    QxFatalException::QxFatalException(const char* method, int line, QString what_arg)
+    throw() : runtime_error(what_arg.toStdString())
+    {
+        _method=method;
+        _line=line;
+    }
 
-QxFatalException::QxFatalException(QString method, int line, QString what_arg)
-    : QxException(method, line, what_arg) {  }
+    QxFatalException::QxFatalException(QString method, int line, QString what_arg)
+    throw() : runtime_error(what_arg.toStdString())
+    {
+        _method=method;
+        _line=line;
+    }
 
-QxFatalException::~QxFatalException() throw() {  }
+    QxFatalException::~QxFatalException() throw()
+    {
+
+    }
+
+    QString QxFatalException::method() const
+    {
+        return _method;
+    }
+
+    int QxFatalException::line() const
+    {
+        return _line;
+    }
 }
 

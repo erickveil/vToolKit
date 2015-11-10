@@ -1,7 +1,8 @@
 #ifndef QXFATALEXCEPTION_H
 #define QXFATALEXCEPTION_H
 
-#include "qxexception.h"
+#include <stdexcept>
+#include <QString>
 
 namespace vToolKit{
 
@@ -11,12 +12,18 @@ namespace vToolKit{
      * A Qt based exception, used for topmost level failures that end the
      * program.
      */
-    class QxFatalException : public QxException
+    class QxFatalException : public std::runtime_error
     {
     public:
-        QxFatalException(const char* method, int line, QString what_arg);
-        QxFatalException(QString method, int line, QString what_arg);
+        QxFatalException(const char* method, int line, QString what_arg) throw();
+        QxFatalException(QString method, int line, QString what_arg) throw();
         ~QxFatalException() throw();
+        QString method() const;
+        int line() const;
+
+    private:
+        int _line;
+        QString _method;
     };
 
    }
