@@ -33,10 +33,23 @@ namespace vToolKit{
         char * sendAndReceive(char* msg, int msg_len) override;
         bool isNull() override;
 
+        /**
+         * Provides an identifier for the object based on the ip and port of
+         * the intended socket.
+         *
+         * There may be more than one object with this identifier. The socket
+         * does not need to be connected or even valid.
+         *
+         * @brief getIdentifier
+         * @return QString : An identifier string in the form ip:port.
+         */
+        QString getIdentifier() const override;
+
     private:
         iLog *_log;
         QHostAddress _socket_address;
         int _port;
+
         int _timeout_ms;
         QByteArray _outbox;
         QByteArray _response;

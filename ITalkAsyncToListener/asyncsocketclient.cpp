@@ -41,7 +41,11 @@ namespace vToolKit{
     {
 
     }
-
+    ITalkToListener *AsyncSocketClient::client() const
+    {
+        return _client;
+    }
+    
     void AsyncSocketClient::_sendMessage()
     {
         QByteArray response=_client->sendAndReceive(_msg);

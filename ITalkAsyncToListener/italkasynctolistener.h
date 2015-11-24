@@ -20,6 +20,15 @@ namespace vToolKit{
     public:
         virtual ~ITalkAsyncToListener() {}
 
+        /**
+         * Allows access to the ITalkToListener interface that is being
+         * asynchronously handled.
+         *
+         * @brief client
+         * @return
+         */
+        virtual ITalkToListener *client() const;
+
     signals:
         /**
          * @brief finishedTalking

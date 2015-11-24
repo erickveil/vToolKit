@@ -35,6 +35,8 @@ namespace vToolKit{
         void startWorker() override;
         bool isNull() override;
 
+        ITalkToListener *client() const override;
+
     public slots:
         void eventThreadStart() override;
         void eventThreadFinished() override;
@@ -45,7 +47,9 @@ namespace vToolKit{
     private:
         iLog *_log;
         QString _worker_id;
+        // todo: getter needed - ITalkAsyncToListener
         ITalkToListener *_client;
+
         QByteArray _msg;
         QThread _thread;
         bool _is_connected;

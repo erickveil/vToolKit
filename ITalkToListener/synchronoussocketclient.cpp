@@ -48,11 +48,16 @@ namespace vToolKit{
         return false;
     }
 
+    QString SynchronousSocketClient::getIdentifier() const
+    {
+        return QString(_socket_address.toString())+":"+QString::number(_port);
+    }
+    
     void SynchronousSocketClient::_validateHostAddress()
     {
         bool is_valid=(
-                QAbstractSocket::IPv4Protocol==_socket_address.protocol()
-                || QAbstractSocket::IPv6Protocol==_socket_address.protocol());
+                    QAbstractSocket::IPv4Protocol==_socket_address.protocol()
+                    || QAbstractSocket::IPv6Protocol==_socket_address.protocol());
 
         if(is_valid) return;
 

@@ -30,6 +30,20 @@ namespace vToolKit{
         virtual char * sendAndReceive(char * msg, int msg_len) = 0;
         virtual bool isNull() = 0;
 
+        /**
+         * Provides an identifier for the client, based off of its connection
+         * information.
+         *
+         * For example: A socket client might return an ip:port string.
+         * A pipe might return the pipe name. A file might return a file name.
+         * A database might return a table name.
+         *
+         * @brief getIdentifier
+         * @return The identifier for the object that is controlled by this
+         * interface. There is no guarantee that this identifier is unique.
+         */
+        virtual QString getIdentifier() const;
+
     };
 
 }
