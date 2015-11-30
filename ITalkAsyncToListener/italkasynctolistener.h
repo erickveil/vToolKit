@@ -27,7 +27,7 @@ namespace vToolKit{
          * @brief client
          * @return
          */
-        virtual ITalkToListener *client() const;
+        virtual ITalkToListener *client() = 0;
 
     signals:
         /**

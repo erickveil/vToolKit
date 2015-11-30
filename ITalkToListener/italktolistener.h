@@ -42,7 +42,7 @@ namespace vToolKit{
          * @return The identifier for the object that is controlled by this
          * interface. There is no guarantee that this identifier is unique.
          */
-        virtual QString getIdentifier() const;
+        virtual QString getIdentifier() = 0;
 
     };
 

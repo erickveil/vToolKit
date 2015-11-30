@@ -41,7 +41,7 @@ namespace vToolKit{
     {
 
     }
-    ITalkToListener *AsyncSocketClient::client() const
+    ITalkToListener *AsyncSocketClient::client()
     {
         return _client;
     }

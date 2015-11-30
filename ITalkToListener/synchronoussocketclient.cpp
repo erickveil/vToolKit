@@ -48,7 +48,7 @@ namespace vToolKit{
         return false;
     }
 
-    QString SynchronousSocketClient::getIdentifier() const
+    QString SynchronousSocketClient::getIdentifier()
     {
         return QString(_socket_address.toString())+":"+QString::number(_port);
     }

@@ -35,7 +35,7 @@ namespace vToolKit{
         void startWorker() override;
         bool isNull() override;
 
-        ITalkToListener *client() const override;
+        ITalkToListener *client() override;
 
     public slots:
         void eventThreadStart() override;

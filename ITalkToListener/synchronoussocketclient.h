@@ -43,7 +43,7 @@ namespace vToolKit{
          * @brief getIdentifier
          * @return QString : An identifier string in the form ip:port.
          */
-        QString getIdentifier() const override;
+        QString getIdentifier() override;
 
     private:
         iLog *_log;
