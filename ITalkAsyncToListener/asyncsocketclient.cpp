@@ -5,7 +5,6 @@ namespace vToolKit{
     AsyncSocketClient::AsyncSocketClient(iLog *log, QString id,
                                          ITalkToListener *client,
                                          QByteArray msg, QObject *parent)
-        : QObject(parent)
     {
         _log=log;
         _worker_id=id;

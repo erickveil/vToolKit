@@ -26,7 +26,7 @@ namespace vToolKit{
      *
      * You will still need to lock any shared variables if using them.
      */
-    class IRunConcurrent
+    class IRunConcurrent : public QObject
     {
     public:
         /**

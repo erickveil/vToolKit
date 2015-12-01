@@ -11,8 +11,7 @@
 namespace vToolKit{
 
     class AsyncSocketClient
-            : public QObject
-            , public ITalkAsyncToListener
+            : public ITalkAsyncToListener
     {
         Q_OBJECT
     public:
