@@ -68,6 +68,10 @@ namespace vToolKit{
          * occur on the new thread.
          * When the operation concludes, be sure to call QThread::exit(), and
          * QThread()::wait().
+         *
+         * Contents should be contained within a try/catch block to catch any
+         * warning level errors and log them, otherwise the program will
+         * terminate.
          */
         virtual void eventThreadStart() = 0;
 

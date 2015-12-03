@@ -33,13 +33,20 @@ namespace vToolKit{
 
     void AsyncSocketClient::eventThreadStart()
     {
-        _sendMessage();
+        try{
+            _sendMessage();
+        }
+        catch(const QxException &ex){
+            _log->logWarn(ex.method().toStdString(), ex.line(),
+                          QString(ex.what()));
+        }
     }
 
     void AsyncSocketClient::eventThreadFinished()
     {
 
     }
+
     ITalkToListener *AsyncSocketClient::client()
     {
         return _client;
