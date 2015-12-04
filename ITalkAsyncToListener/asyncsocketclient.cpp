@@ -40,6 +40,13 @@ namespace vToolKit{
             _log->logWarn(ex.method().toStdString(), ex.line(),
                           QString(ex.what()));
         }
+        catch( ... ){
+            QString err_msg="Unrecognized or fatal error attempt caught while "
+                            "attempting to send to listener asynchronously. "
+                            "Worker id: "+_worker_id+" message: "+_msg+" hex: "
+                    +_msg.toHex();
+            _log->logError(__PRETTY_FUNCTION__,__LINE__,err_msg);
+        }
     }
 
     void AsyncSocketClient::eventThreadFinished()

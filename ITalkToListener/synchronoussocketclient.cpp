@@ -87,6 +87,7 @@ namespace vToolKit{
         bool is_timeout=!_resource.waitForBytesWritten(_timeout_ms);
 
         if(is_timeout){
+            _resource.close();
             throw_msg=QString("Socket write timed out: ")
                     +_getLogableData()
                     +_resource.errorString();
@@ -95,6 +96,7 @@ namespace vToolKit{
         }
 
         if(!is_success){
+            _resource.close();
             throw_msg=QString("Failed to write to host: ")
                     +_getLogableData()
                     +_resource.errorString();
