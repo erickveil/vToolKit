@@ -7,6 +7,11 @@
 
 namespace vToolKit{
 
+    /**
+     * WARNING: This class is not complete. Do not use.
+     *
+     * @brief The LogFile class
+     */
     class LogFile : public IFlatFile
     {
     public:

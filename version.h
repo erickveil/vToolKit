@@ -12,7 +12,7 @@
  * To set the version, edit this file's values for VERSION_MAJOR and
  * VERSION_MINOR.
  *
- * Then, run setversion.sh to automaticaly set VERSION_COMMIT "8034920"
+ * Then, run setversion.sh to automaticaly set VERSION_COMMIT "96502dc"
  * current commit hash.
  *
  * Do this before each build.
@@ -26,7 +26,7 @@ using namespace std;
 
 #define VERSION_MAJOR 1
 #define VERSION_MINOR 1
-#define VERSION_COMMIT "8034920"
+#define VERSION_COMMIT "96502dc"
 
 
 namespace vToolKit{

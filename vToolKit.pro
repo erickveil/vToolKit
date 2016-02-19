@@ -41,7 +41,8 @@ HEADERS += \
     ITalkAsyncToListener/asyncsocketclient.h \
     ITalkAsyncToListener/irunconcurrent.h \
     ITalkAsyncToListener/italkasynctolistener.h \
-    ITalkToListener/italktolistener.h
+    ITalkToListener/italktolistener.h \
+    clogger/ILog.h
 
 unix {
     target.path = /usr/lib

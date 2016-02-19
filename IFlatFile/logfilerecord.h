@@ -10,6 +10,11 @@
 
 namespace vToolKit{
 
+    /**
+     * WARNING: This class is not complete. Do not use.
+     *
+     * @brief The LogFileRecord class
+     */
     class LogFileRecord : public IFlatFileRecord
     {
     public:
