@@ -7,5 +7,6 @@
 cp -v *.h bin/Release/
 cp -v */*.h bin/Release/
 rm -v bin/Release/*.o
+rm -v bin/Release/*.cpp
 rm -v bin/Release/Makefile
 
