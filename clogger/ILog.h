@@ -1,8 +1,20 @@
 #ifndef ILOG_H
 #define ILOG_H
 
+
+#include <exception>
+#include <string>
+
+#include "toolkitmacros.h"
+#include "qxexception.h"
+using namespace std;
+
 namespace vToolKit{
 
+    /**
+     * @brief The ILog class
+     * Interface for logging.
+     */
     class ILog {
     public:
         virtual ~ILog() {}
