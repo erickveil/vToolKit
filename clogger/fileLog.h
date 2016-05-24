@@ -8,6 +8,7 @@
 #include <fstream>
 #include <iostream>
 #include <unistd.h>
+#include <QString>
 
 #include "iLog.h"
 #include "IReadWriteFile.h"
