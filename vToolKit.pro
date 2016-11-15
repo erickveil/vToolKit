@@ -23,7 +23,6 @@ SOURCES += \
     ITalkAsyncToListener/asyncsocketclient.cpp
 
 HEADERS += \
-    clogger/iLog.h \
     ExtendedException/qxfatalexception.h \
     ExtendedException/qxexception.h \
     IFlatFile/iflatfilerecord.h \
