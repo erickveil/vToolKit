@@ -19,10 +19,10 @@ namespace vToolKit{
     {
     public:
         LogFileRecord();
-        LogFileRecord(QString record_str, iLog &log);
+        LogFileRecord(QString record_str, ILog &log);
         ~LogFileRecord() override;
 
-        void initRecord(QString record_str, iLog &log);
+        void initRecord(QString record_str, ILog &log);
         QString getField(QString field_name) override;
         void setField(QString field_name, QString field_val) override;
         bool isNull() override;
@@ -36,7 +36,7 @@ namespace vToolKit{
         QString _message;
 
         QString _record_str;
-        iLog *_log;
+        ILog *_log;
 
         void _initNullRecord();
         void _constructRecordFromString();

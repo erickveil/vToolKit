@@ -4,13 +4,14 @@
 //
 // Created by fac on 8/19/15.
 //
+#include <execinfo.h>
 
 #include <fstream>
 #include <iostream>
 #include <unistd.h>
 #include <QString>
 
-#include "iLog.h"
+#include "ILog.h"
 #include "IReadWriteFile.h"
 
 
@@ -21,7 +22,7 @@ namespace vToolKit
     /**
      * Standard implementation for logging methods' interfaces.
      */
-    class fileLog : public  iLog {
+    class fileLog : public  ILog {
 
     public:
         /**
@@ -108,6 +109,10 @@ namespace vToolKit
         void logFatal(string func, int line, QString msg) override;
         void logFatal(QxException ex) override;
 
+        void logTrace() override;
+
+        void logCustom(QString level, string func, int line, QString msg) override;
+
         bool isNull() override { return false;}
 
     private:
@@ -137,6 +142,13 @@ namespace vToolKit
 
         string _intToString(int number);
     };
+
+    void fileLog::logCustom(QString level, string func, int line, QString msg)
+    {
+        auto log_str = _buildLogLine(level.toStdString(), func, line,
+                                     msg.toStdString());
+        _logLog(log_str);
+    }
 }
 
 #endif //CLOG_FILELOG_H

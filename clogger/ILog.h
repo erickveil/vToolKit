@@ -238,6 +238,37 @@ namespace vToolKit{
         virtual void logFatal(QxException ex) = 0;
 
         /**
+         * @brief logTrace
+         * Creates a TRACE level log entry.
+         *
+         * Trace log entries usually are logged immediately after any ERROR or
+         * FATAL log entry. Rarely do they occur after WARN or DEBUG, and never
+         * follow any other entry.
+         *
+         * If they occur on their own, it can be difficult to understand the
+         * reason for the trace. The best bet is to call for a logTrace only
+         * from within logError or logFatal method definitions.
+         *
+         * This version of logTrace will generate its own implementation of a
+         * backtrace. Likely obtained using gcc compiling libraries:
+         *
+         * http://www.gnu.org/software/libc/manual/html_node/Backtraces.html
+         */
+        virtual void logTrace() = 0;
+
+        /**
+         * @brief logCustom
+         * Allows logging of any arbitrary level
+         *
+         * @param level
+         * @param func
+         * @param line
+         * @param msg
+         */
+        virtual void logCustom(QString level, string func, int line,
+                               QString msg) = 0;
+
+        /**
          * @brief isNull
          *
          * Null logs are instantiated inside default constructors and null

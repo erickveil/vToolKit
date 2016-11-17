@@ -9,12 +9,12 @@ namespace vToolKit{
         _log=new NullLog;
     }
 
-    LogFileRecord::LogFileRecord(QString record_str, iLog &log)
+    LogFileRecord::LogFileRecord(QString record_str, ILog &log)
     {
         initRecord(record_str, log);
     }
 
-    void LogFileRecord::initRecord(QString record_str, iLog &log)
+    void LogFileRecord::initRecord(QString record_str, ILog &log)
     {
         _initNullRecord();
         _record_str=record_str;

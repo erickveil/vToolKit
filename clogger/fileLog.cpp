@@ -79,6 +79,30 @@ namespace vToolKit{
         logFatal(ex.method().toStdString(), ex.line(), QString(ex.what()));
     }
 
+    void fileLog::logTrace()
+    {
+        // generate backtrace
+        void *array[200];
+        size_t size;
+        char **strings;
+        size_t i;
+
+        size = backtrace(array, 200);
+        strings = backtrace_symbols(array, size);
+
+        QString trace_string = "";
+        for (i=0; i < size; ++i) {
+            trace_string += strings[i];
+        }
+
+        free(strings);
+
+        // log it
+        string log_line = _buildLogLine("TRACE", __PRETTY_FUNCTION__, __LINE__,
+                                        trace_string.toStdString());
+        _logErr(log_line);
+    }
+
     void fileLog::_logLog(string log_line) {
         if(_isLogfileSet()) _writeToLogFile(log_line);
         else _writeToStdLog(log_line);

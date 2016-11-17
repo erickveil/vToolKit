@@ -5,7 +5,7 @@
 // Created by fac on 8/19/15.
 //
 
-#include "iLog.h"
+#include "ILog.h"
 
 namespace vToolKit{
 
@@ -14,7 +14,7 @@ namespace vToolKit{
      *
      * Methods will do nothing so that logging does not interfere with testing.
      */
-    class testLog : public iLog {
+    class testLog : public ILog {
 
     public:
         void logInfo(string func, int line, string msg) override {
@@ -92,6 +92,17 @@ namespace vToolKit{
             UNUSED(line);
             UNUSED(msg);
         }
+
+        void logTrace() override {  }
+
+        void logCustom(QString level, string func, int line, QString msg)
+        override {
+            UNUSED(level);
+            UNUSED(func);
+            UNUSED(line);
+            UNUSED(msg);
+        }
+
 
         void logFatal(QxException ex) override { UNUSED(ex); }
 
