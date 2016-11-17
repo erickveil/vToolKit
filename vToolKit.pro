@@ -10,6 +10,7 @@ QT += network
 TARGET = vToolKit
 TEMPLATE = lib
 CONFIG += staticlib
+QMAKE_CXXFLAGS += -rdynamic
 
 SOURCES += \
     ExtendedException/qxfatalexception.cpp \
