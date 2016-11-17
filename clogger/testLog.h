@@ -93,7 +93,9 @@ namespace vToolKit{
             UNUSED(msg);
         }
 
-        void logTrace() override {  }
+        void logTrace(QxException ex) override {
+            UNUSED(ex);
+        }
 
         void logCustom(QString level, string func, int line, QString msg)
         override {

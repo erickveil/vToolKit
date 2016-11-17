@@ -7,6 +7,7 @@ namespace vToolKit{
     {
         _method=method;
         _line=line;
+        _generateTrace();
     }
 
     QxFatalException::QxFatalException(QString method, int line, QString what_arg)
@@ -14,11 +15,11 @@ namespace vToolKit{
     {
         _method=method;
         _line=line;
+        _generateTrace();
     }
 
     QxFatalException::~QxFatalException() throw()
     {
-
     }
 
     QString QxFatalException::method() const
@@ -26,9 +27,34 @@ namespace vToolKit{
         return _method;
     }
 
+    QString QxFatalException::trace() const
+    {
+        return _trace;
+    }
+
     int QxFatalException::line() const
     {
         return _line;
+    }
+
+    void QxFatalException::_generateTrace()
+    {
+        // generate backtrace
+        void *array[200];
+        size_t size;
+        char **strings;
+        size_t i;
+
+        size = backtrace(array, 200);
+        strings = backtrace_symbols(array, size);
+
+        _trace = "";
+        QString delim = "\n";
+        for (i=0; i < size; ++i) {
+            _trace += (delim + strings[i]);
+        }
+
+        free(strings);
     }
 }
 

@@ -254,7 +254,7 @@ namespace vToolKit{
          *
          * http://www.gnu.org/software/libc/manual/html_node/Backtraces.html
          */
-        virtual void logTrace() = 0;
+        virtual void logTrace(QxException ex) = 0;
 
         /**
          * @brief logCustom
