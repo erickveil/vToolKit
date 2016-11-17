@@ -184,4 +184,11 @@ namespace vToolKit{
         _log_file=log_file;
     }
 
+    void fileLog::logCustom(QString level, string func, int line, QString msg)
+    {
+        auto log_str = _buildLogLine(level.toStdString(), func, line,
+                                     msg.toStdString());
+        _logLog(log_str);
+    }
+
 }

@@ -143,12 +143,6 @@ namespace vToolKit
         string _intToString(int number);
     };
 
-    void fileLog::logCustom(QString level, string func, int line, QString msg)
-    {
-        auto log_str = _buildLogLine(level.toStdString(), func, line,
-                                     msg.toStdString());
-        _logLog(log_str);
-    }
 }
 
 #endif //CLOG_FILELOG_H
