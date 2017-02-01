@@ -4,7 +4,8 @@
 #include <QDebug>
 #include <stdexcept>
 
-using namespace vQtTools;
+//using namespace vQtTools;
+using namespace vToolKit;
 
 int main(int argc, char *argv[])
 {
@@ -126,9 +127,26 @@ int main(int argc, char *argv[])
     }
 
     //========================================
-    // Test QxFatalException cast to QxException
-    test_name="QxFatalExceptionCast";
+    // Test QxException cast to QxFatalException
+    test_name="QxExceptionCast";
     msg="exception not caught";
+    pass=false;
+    try{
+        ++test_count;
+        throw QxException("fatal method name",34, "fatal message");
+    }
+    catch(QxFatalException &ex){
+        pass=true;
+    }
+    catch(...){ pass=false; }
+    Q_ASSERT_X(pass,test_name.toLocal8Bit(),msg.toLocal8Bit());
+
+    //========================================
+    // Test QxFatalException cast to QxException
+    // Note: The casing order had been changed, this test is no longer valid.
+    /*
+    test_name="QxFatalExceptionCast";
+    msg="fatal exception not caught";
     pass=false;
     try{
         ++test_count;
@@ -139,6 +157,7 @@ int main(int argc, char *argv[])
     }
     catch(...){ pass=false; }
     Q_ASSERT_X(pass,test_name.toLocal8Bit(),msg.toLocal8Bit());
+    */
 
     //========================================
     // Test QxFAtaException

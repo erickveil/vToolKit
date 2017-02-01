@@ -17,12 +17,18 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     ../qxfatalexception.cpp \
-    ../qxexception.cpp
+    ../qxexception.cpp \
+    ../backtraceresultrecord.cpp \
+    ../symbolrecord.cpp \
+    ../symboltable.cpp
 
 INCLUDEPATH += ../
 
 HEADERS += \
     ../extendedexception_global.h \
     ../qxfatalexception.h \
-    ../qxexception.h
+    ../qxexception.h \
+    ../backtraceresultrecord.h \
+    ../symbolrecord.h \
+    ../symboltable.h
 
