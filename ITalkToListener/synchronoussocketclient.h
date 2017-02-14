@@ -6,7 +6,7 @@
 #include <QHostAddress>
 #include <QTcpSocket>
 
-#include "iLog.h"
+#include "ILog.h"
 #include "italktolistener.h"
 #include "nulllog.h"
 #include "qxexception.h"
@@ -24,7 +24,7 @@ namespace vToolKit{
     class SynchronousSocketClient : public ITalkToListener
     {
     public:
-        SynchronousSocketClient(iLog *log, QHostAddress host, int port,
+        SynchronousSocketClient(ILog *log, QHostAddress host, int port,
                                 int timeout_ms);
         ~SynchronousSocketClient() override;
 
@@ -46,7 +46,7 @@ namespace vToolKit{
         QString getIdentifier() override;
 
     private:
-        iLog *_log;
+        ILog *_log;
         QHostAddress _socket_address;
         int _port;
 

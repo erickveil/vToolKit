@@ -5,7 +5,7 @@
 #include <QStringList>
 
 #include "iflatfilerecord.h"
-#include "iLog.h"
+#include "ILog.h"
 
 
 namespace vToolKit{

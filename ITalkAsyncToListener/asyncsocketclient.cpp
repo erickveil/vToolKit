@@ -2,7 +2,7 @@
 
 namespace vToolKit{
 
-    AsyncSocketClient::AsyncSocketClient(iLog *log, QString id,
+    AsyncSocketClient::AsyncSocketClient(ILog *log, QString id,
                                          ITalkToListener *client,
                                          QByteArray msg, QObject *parent)
     {

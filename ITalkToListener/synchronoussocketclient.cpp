@@ -3,7 +3,7 @@
 
 namespace vToolKit{
 
-    SynchronousSocketClient::SynchronousSocketClient(iLog *log,
+    SynchronousSocketClient::SynchronousSocketClient(ILog *log,
                                                      QHostAddress host,
                                                      int port, int timeout_ms)
     {

@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QThread>
 
-#include "iLog.h"
+#include "ILog.h"
 #include "italktolistener.h"
 #include "italkasynctolistener.h"
 
@@ -28,7 +28,7 @@ namespace vToolKit{
          * @param msg QByteArray : The message to send to the listener.
          * @param parent
          */
-        AsyncSocketClient(iLog *log, QString id, ITalkToListener *client,
+        AsyncSocketClient(ILog *log, QString id, ITalkToListener *client,
                           QByteArray msg, QObject *parent = 0);
         ~AsyncSocketClient() override;
         void startWorker() override;
@@ -44,7 +44,7 @@ namespace vToolKit{
         void finishedTalking(QString id, QByteArray response);
 
     private:
-        iLog *_log;
+        ILog *_log;
         QString _worker_id;
         // todo: getter needed - ITalkAsyncToListener
         ITalkToListener *_client;
