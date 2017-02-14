@@ -15,7 +15,7 @@ machine, as the build directory is defined outside of the repo.
 
 Several sub-directories are found in the project root.
 Each of these directories is a sub project.
-Each subproject has their own independent library build and *.pro file.
+Each subproject has their own independent library build and `*.pro` file.
 This allows you to build just one component (aka a logger or exceptions) if
 that's whay you want.
 
@@ -44,9 +44,9 @@ Close the project completely, then open in vim vToolKit.pro.user, which should
 have been generated when you opened the project in QtCreator.
 
 Locate and edit the 2 build paths in the file:
-/path/to/project/root/bin/Release
+    /path/to/project/root/bin/Release
 and
-/path/to/project/root/bin/Debug
+    /path/to/project/root/bin/Debug
 
 The build path must be here for the install.sh script to work.
 
@@ -54,6 +54,21 @@ Save and close vToolKit.pro.user.
 
 Main Project Build
 ----
+NOTE: The build process has changed. The install.sh script takes on more of the
+build steps and you no longer have to open QTCreator to build.
+
+The old build instructions are included at the end, in case the script fails.
+
+1. Run install.sh
+2. Copy the contents of vToolKit/bin/Release to your project's library
+   directory for use.
+    
+You may need to `rm -r /path/to/your/main/project/lib/vToolKit` before you do
+the copy, if you are replacing an old version.
+
+
+Legacy Build Instructions
+---
 
 First, run setversion.sh. This script will update the version headder for the
 library with a unique value for the current build.
@@ -103,7 +118,4 @@ project's library headders match the actual compiled library.
 At this time, for the version method to work, you will need to hand edit the
 major and minor version numbers in version.cpp to match the ones in version.h.
 The build number in version.cpp is handled by setversion.sh.
-
-
-
 
