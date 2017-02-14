@@ -2,7 +2,8 @@
 
 namespace vToolKit{
 
-    QxFatalException::QxFatalException(const char* method, int line, QString what_arg)
+    QxFatalException::QxFatalException(const char* method, int line,
+                                       QString what_arg)
     throw() : runtime_error(what_arg.toStdString())
     {
         _method=method;
@@ -10,7 +11,8 @@ namespace vToolKit{
         _generateTrace();
     }
 
-    QxFatalException::QxFatalException(QString method, int line, QString what_arg)
+    QxFatalException::QxFatalException(QString method, int line,
+                                       QString what_arg)
     throw() : runtime_error(what_arg.toStdString())
     {
         _method=method;
@@ -39,22 +41,34 @@ namespace vToolKit{
 
     void QxFatalException::_generateTrace()
     {
-        // generate backtrace
         void *array[200];
         size_t size;
-        char **strings;
+        char **raw_trace_strings;
         size_t i;
 
         size = backtrace(array, 200);
-        strings = backtrace_symbols(array, size);
+        raw_trace_strings = backtrace_symbols(array, size);
 
-        _trace = "";
+        _trace = "Stack Trace:";
         QString delim = "\n";
+        QList<BackTraceResultRecord> record_list;
+        auto prog = QFileInfo(QCoreApplication::applicationFilePath())
+                .fileName();
+        SymbolTable symbol_table(prog);
+        symbol_table.initSymbolTable();
+
+        // each line in the raw trace
         for (i=0; i < size; ++i) {
-            _trace += (delim + strings[i]);
+            // create a clean trace and add it to the list
+            BackTraceResultRecord record(raw_trace_strings[i], symbol_table);
+            record_list.append(record);
+            QString trace_string = QString("[") + QString::number(i) + "] "
+                    + record.getHexRecordAddress() + " "
+                    + record.getMethodName();
+            _trace += (delim + trace_string);
         }
 
-        free(strings);
+        free(raw_trace_strings);
     }
 }
 
