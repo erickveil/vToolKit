@@ -29,6 +29,7 @@ PRO_FILE=${PROJECT_ROOT}/vToolKit.pro
 rm -v *.o
 rm -v makefile
 rm -v Makefile
+rm -v *moc_
 
 
 

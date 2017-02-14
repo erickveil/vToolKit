@@ -21,7 +21,10 @@ SOURCES += \
     IFlatFile/logfile.cpp \
     version.cpp \
     ITalkToListener/synchronoussocketclient.cpp \
-    ITalkAsyncToListener/asyncsocketclient.cpp
+    ITalkAsyncToListener/asyncsocketclient.cpp \
+    ExtendedException/backtraceresultrecord.cpp \
+    ExtendedException/symbolrecord.cpp \
+    ExtendedException/symboltable.cpp
 
 HEADERS += \
     ExtendedException/qxfatalexception.h \
@@ -42,7 +45,10 @@ HEADERS += \
     ITalkAsyncToListener/irunconcurrent.h \
     ITalkAsyncToListener/italkasynctolistener.h \
     ITalkToListener/italktolistener.h \
-    clogger/ILog.h
+    clogger/ILog.h \
+    ExtendedException/backtraceresultrecord.h \
+    ExtendedException/symbolrecord.h \
+    ExtendedException/symboltable.h
 
 unix {
     target.path = /usr/lib
