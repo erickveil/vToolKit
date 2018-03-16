@@ -21,8 +21,8 @@ cd bin/Release/
 pwd
 
 PRO_FILE=${PROJECT_ROOT}/vToolKit.pro
-/usr/lib64/qt5/bin/qmake -Wall ${PRO_FILE}
-/usr/bin/make
+qmake -Wall ${PRO_FILE}
+make
 
 
 # remove build files
